@@ -1,0 +1,5 @@
+ErrorDocument 404 /not-found-page.html
+
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^gfinteriors.in [NC]
+RewriteRule ^(.*)$ http://www.gfinteriors.in/$1 [L,R=301,NC]
