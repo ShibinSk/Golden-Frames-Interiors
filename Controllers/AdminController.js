@@ -7,6 +7,6 @@ exports.AddNew=async(req,res)=>{
         res.render('/index/About')
         
     } catch (error) {
-        
+        console.log(error);
     }
 }
