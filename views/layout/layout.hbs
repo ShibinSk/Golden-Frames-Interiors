@@ -24,7 +24,11 @@ We are always here to fill your dream interior colourful. One of the best interi
     <meta property="og:url" content="Goldenframes" />
     <title>The Best Interior Design Company in Kochi</title>
     {{!-- <link rel="stylesheet" href="style.css" media="screen" /> --}}
-    
+     {{!-- <link rel="stylesheet" href="About.css"  /> --}}
+ <link rel="stylesheet" href="style.css" media="screen" />
+ {{!-- <link rel="stylesheet" href="nicepage.js" media="screen" /> --}}
+ {{!-- <link rel="stylesheet" href="nicepage.css" media="screen" /> --}}
+ {{!-- <link rel="stylesheet" href="jquery.js" media="screen" /> --}}
    
     <script
       class="u-script"
@@ -78,19 +82,18 @@ We are always here to fill your dream interior colourful. One of the best interi
     <meta data-intl-tel-input-cdn-path="intlTelInput/" />
   </head>
   <body class="u-body u-xl-mode" data-lang="en">
-
-    {{#if admin}}
-	{{>admin-sidebar}}
+   {{#if admin}}
+	{{>admin-sidbar}}
 	{{else if navside}}
 	{{else}}
 	{{>index-header}}
 	{{/if}}
 	{{{body}}}
-  {{#if admin}}
+	
+	{{#if admin}}
 
 	{{else}}
-	{{>index-footer}}
+	{{!-- {{>index-header}} --}}
 	{{/if}}
-	
      </body>
 </html>

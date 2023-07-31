@@ -5,8 +5,12 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
   res.render("index", { admin: false});
 });
-router.get('/index/About', function(req, res, next) {
-  res.send('index');
+router.get('/about', function (req, res, next) {
+  res.render('index/About',  { admin: false});
 });
+router.get('/services', function (req, res, next) {
+  res.render('index/Services',  { admin: false});
+});
+
 
 module.exports = router;

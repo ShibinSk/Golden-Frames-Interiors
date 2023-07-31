@@ -2,18 +2,19 @@
 
 
 
-exports.AddNew=async(req,res)=>{
+exports.adminLoginGet=async(req,res)=>{
     try {
-        res.render('index/Blog',{admin: true})
+        res.render('admin/adminLogin', {navside:true})
         
     } catch (error) {
         console.log(error);
     }
 }
-exports.abott=async(req,res)=>{
+
+exports.adminLoginPost=async(req,res)=>{
     try {
-        res.render('index')
-        
+        console.log(req.body);
+        res.render('admin/adminHome' ,{admin:true})
     } catch (error) {
         console.log(error);
     }
