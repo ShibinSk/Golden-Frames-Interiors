@@ -141,9 +141,10 @@ button{
     </div>
     <form action="/admin/adminLogin" method="post">
         <h3>Admin Panel</h3>
-
-        <label for="username">Username</label>
-        <input type="text" name='name' "Email or Phone" id="username">
+<p style="color: red;">{{message}}</p>
+        <label for="Email">Email</label>
+        <input type="text" name='email' "Email or Phone" id="username">
+        
 
         <label for="password">Password</label>
         <input type="password" name='password' placeholder="Password" id="password">

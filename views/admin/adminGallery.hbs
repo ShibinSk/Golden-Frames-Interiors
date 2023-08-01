@@ -1,0 +1,47 @@
+<div class="addpro">
+  
+  <div class="container mt-5 pt-5 ">
+    <div class="row">
+        <a href="/admin/addGalleryImages" class="bn62">Add products</a>
+    </div>
+    <table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">No</th>
+      <th scope="col">Title</th>
+      <th scope="col">Category</th>
+      <th scope="col">Price</th>
+      <th scope="col">Quantitiy</th>
+      <th scope="col">Description</th>
+       <th >image</th>
+       
+    </tr>
+  </thead>
+  <tbody>
+    {{#each products}}
+    <tr>
+      <th scope="row">{{inc @index}}</th>
+      <td>{{this.product}}</td>
+      <td>{{this.category}}</td>
+      <td>₹ {{this.orginalprice}}</td> 
+      <td>{{this.quantity}}</td>
+      <td>{{this.description}}</td>
+      <td><img style="width: 50px; height: 50px;" src="/product-images/{{image.[0]}}" alt=""></td>
+      <td>
+        <div class="DE">
+           <a href="/admin/edit-products?id={{this._id}}" class="bn624">Edit</a>
+           <input type="hidden" name="id" id="id" value="{{this._id}}">
+          {{!-- <a href="/admin/delete-products/{{this._id}}" class="bn623" onclick=" return confirm('Are You sure delete it {{this.name}}')">Delete</a> --}}
+          <a  class="bn623" onclick="showSwal('delete-product')">Delete</a>
+       
+        </div>
+        
+        </td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+</div>
+
+</div>

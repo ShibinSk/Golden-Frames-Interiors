@@ -6,7 +6,7 @@ const logger = require('morgan');
 const hbs=require('express-handlebars')
 const indexRouter = require('./routes/index');
 const adminRouter = require('./routes/admin');
-
+const { default: mongoose } = require('mongoose');
 const app = express();
 
 // view engine setup
@@ -35,6 +35,13 @@ app.use('/admin', adminRouter);
 app.use(function(req, res, next) {
   next(createError(404));
 });
+
+console.log('Trying to conenct to mongodb');
+mongoose.connect(process.env.MONGO_DB ?? 'mongodb://127.0.0.1:27017/GFI').then(() => {
+  console.log('Connected to mongodb');
+})
+  .catch(console.log);
+
 
 // error handler
 app.use(function(err, req, res, next) {
