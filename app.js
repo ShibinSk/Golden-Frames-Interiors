@@ -7,6 +7,8 @@ const hbs=require('express-handlebars')
 const indexRouter = require('./routes/index');
 const adminRouter = require('./routes/admin');
 const { default: mongoose } = require('mongoose');
+const upload = require('./utils/multer')
+const cloudinary = require('./utils/cloudinary')
 const app = express();
 
 // view engine setup
@@ -41,6 +43,7 @@ mongoose.connect(process.env.MONGO_DB ?? 'mongodb://127.0.0.1:27017/GFI').then((
   console.log('Connected to mongodb');
 })
   .catch(console.log);
+
 
 
 // error handler

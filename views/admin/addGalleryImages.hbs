@@ -6,11 +6,11 @@
         <h2 class="text-center">ADD Images</h2>
      <div class="row">
        
-        <form action="/Admin/add-products" method="post" enctype="multipart/form-data">
+        <form action="/admin/addGalleryImages" method="post" enctype="multipart/form-data">
        
 
-            <label for="">Image Alt</label>
-            <input  type="text" name="alt" class="form-control">
+            <label  for="">Image Alt</label>
+            <input style="width: 50v;"  type="text" name="alt" class="form-control">
             <br>
             {{!-- <label for="">Category</label>
             <input type="text" name="category" class="form-control"> --}}
@@ -61,28 +61,28 @@
                   <label for="">IMAGE 1</label>
                   <img src="https://www.generationsforpeace.org/wp-content/uploads/2018/03/empty.jpg" alt=""
                     style="width: 100px; height:auto" id="imgView1">
-                  <input type="file" name="image1" id="id_image1" class="form-control"
+                  <input type="file" name="images" id="id_image1" class="form-control"
                     onchange=" fileValidation1(event)" accept="image/*">
                 </div>
                 <div class="mt-5 col-md-6">
                   <label for="">IMAGE 2</label>
                   <img src="https://www.generationsforpeace.org/wp-content/uploads/2018/03/empty.jpg" alt=""
                     style="width: 100px; height:auto" id="imgView2">
-                  <input type="file" name="image2" id="id_image2" class="form-control"
+                  <input type="file" name="images" id="id_image2" class="form-control"
                     onchange=" fileValidation2(event)">
                 </div>
                 <div class="mt-5 col-md-6">
                   <label for="">IMAGE 3</label>
                   <img src="https://www.generationsforpeace.org/wp-content/uploads/2018/03/empty.jpg" alt=""
                     style="width: 100px; height:auto" id="imgView3">
-                  <input type="file" name="image3" id="id_image3" class="form-control"
+                  <input type="file" name="images" id="id_image3" class="form-control"
                     onchange=" fileValidation3(event)">
                 </div>
                 <div class="mt-5 col-md-6">
                   <label for="">IMAGE 4</label>
                   <img src="https://www.generationsforpeace.org/wp-content/uploads/2018/03/empty.jpg" alt=""
                     style="width: 100px; height:auto" id="imgView4">
-                  <input type="file" name="image4" id="id_image4" class="form-control"
+                  <input type="file" name="images" id="id_image4" class="form-control"
                     onchange=" fileValidation4(event)">
                 </div>
               </div>

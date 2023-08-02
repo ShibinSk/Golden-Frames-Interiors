@@ -2,13 +2,13 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const adminSchema = new Schema({
-    email: {
-        type: String,
-        trim: true,
-        lowercase: true,
-        unique: true,
-        required: true,
-    },
+  email: {
+    type: String,
+    trim: true,
+    lowercase: true,
+    unique: true,
+    required: true,
+  },
   firstName: { type: String, required: false },
   lastName: { type: String, required: false },
   password: { type: String, required: true },
