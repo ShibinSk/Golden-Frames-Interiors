@@ -43,5 +43,15 @@ res.render('index/Gallery', { admin: false, data: data, mappedData: result });
 
 });
 
+router.get('/Testimonials', function (req, res, next) {
+  res.render('index/Testimonials',  { admin: false});
+});
+router.get('/Blog', function (req, res, next) {
+  res.render('index/Blog',  { admin: false});
+});
+router.get('/Contact', function (req, res, next) {
+  res.render('index/Contact',  { admin: false});
+});
+
 
 module.exports = router;

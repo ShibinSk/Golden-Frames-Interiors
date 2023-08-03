@@ -12,8 +12,8 @@ const adminSchema = new Schema({
   firstName: { type: String, required: false },
   lastName: { type: String, required: false },
   password: { type: String, required: true },
-  access: { type: Boolean, required: true },
-  testimonials: { type: String, required: false },
+  access: { type: Boolean, required: false },
+ 
 });
 
 const Admin = mongoose.model("admin", adminSchema);

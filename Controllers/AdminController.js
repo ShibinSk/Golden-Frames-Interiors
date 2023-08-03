@@ -5,6 +5,7 @@ const upload =require('../utils/multer')
 const cloudinary =require('../utils/cloudinary')
 const fs=require('fs');
 const Gallery = require("../model/adminIGalleryModel");
+const Testimonials = require("../model/testimonials");
 exports.adminLoginGet = async (req, res) => {
   try {
     res.render("admin/adminLogin", { navside: true });
@@ -107,3 +108,43 @@ exports.addGalleryImagesPost = async (req, res) => {
     console.log(error);
   }
 };
+
+
+
+exports.addTestimonials=(req,res)=>{
+  try {
+    res.render("admin/add-Testimonials", { admin: true });
+    
+  } catch (error) {
+    
+  }
+}
+exports.addTestimonialsPost= async(req,res)=>{
+  try {
+    console.log(req.body)
+    // await Testimonials.insertMany(req.body)
+   const newtestimonials = new Testimonials({
+    Testimonials:{
+      name:req.body.name,
+      text:req.body.text
+    },
+    
+   })
+   await newtestimonials.save()
+    res.render("admin/add-Testimonials", { admin: true });
+    
+  } catch (error) {
+    
+  }
+}
+
+exports.addBlog=(req,res)=>{
+  try {
+    res.render("admin/add-blog", { admin: true });
+    
+  } catch (error) {
+    
+  }
+}
+
+
