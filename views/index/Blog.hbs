@@ -1,108 +1,112 @@
 <link rel="stylesheet" href="Blog.css" media="screen">
- {{!-- <link rel="stylesheet" href="style.css" media="screen" />
- <link rel="stylesheet" href="nicepage.css" media="screen" /> --}}
-  <section class="u-align-center u-clearfix u-image u-shading u-section-1" src="" data-image-width="750"
-    data-image-height="518" id="sec-f95b">
-    <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
-      <h1 class="u-align-center u-text u-text-default u-title u-text-1">Blog</h1>
-      <p class="u-large-text u-text u-text-variant u-text-2">Latest news and updates from Golden Frames</p>
-    </div>
-  </section>
-  <section class="u-clearfix u-section-2" id="sec-714b">
-    <div class="u-clearfix u-sheet u-sheet-1">
-      <div class="u-align-center u-container-style u-group u-group-1">
-        <div class="u-container-layout u-valign-middle u-container-layout-1">
-          <h2 class="u-text u-text-1">Blog Story 1</h2>
-          <p class="u-text u-text-2">Sample text. Click to select the text box. Click again or double click to start
-            editing the text.</p>
-        </div>
-      </div>
-      <div class="u-clearfix u-expanded-width u-gutter-10 u-layout-wrap u-layout-wrap-1">
-        <div class="u-layout">
-          <div class="u-layout-row">
-            <div class="u-size-30">
-              <div class="u-layout-row">
-                <div
-                  class="u-align-left u-container-style u-image u-layout-cell u-left-cell u-shading u-size-60 u-image-1"
-                  data-image-width="1000" data-image-height="500">
-                  <div class="u-container-layout u-container-layout-2"></div>
-                </div>
-              </div>
-            </div>
-            <div class="u-size-30">
-              <div class="u-layout-col">
-                <div
-                  class="u-align-left u-container-style u-layout-cell u-right-cell u-size-60 u-white u-layout-cell-2">
-                  <div class="u-container-layout u-valign-middle u-container-layout-3">
-                    <h4 class="u-text u-text-3"> Blog Story 1 Subheading</h4>
-                    <p class="u-text u-text-4">Sample text. Click to select the text box. Click again or double click to
-                      start editing the text.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+{{!--
+<link rel="stylesheet" href="style.css" media="screen" />
+<link rel="stylesheet" href="nicepage.css" media="screen" /> --}}
+
+<section class="u-align-center u-clearfix u-image u-shading u-section-1" src="" data-image-width="750"
+  data-image-height="518" id="sec-f95b">
+  <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+    <h1 class="u-align-center u-text u-text-default u-title u-text-1">Blog</h1>
+    <p class="u-large-text u-text u-text-variant u-text-2">Latest news and updates from Golden Frames</p>
+  </div>
+
+</section>
+{{#each mappedData}}
+{{!-- <h1>{{text1}}</h1> --}}
+
+<section class="u-clearfix u-section-2" id="sec-714b">
+  <div class="u-clearfix u-sheet u-sheet-1">
+    <div class="u-align-center u-container-style u-group u-group-1">
+      <div class="u-container-layout u-valign-middle u-container-layout-1">
+        <h2 class="u-text u-text-1">{{header}}</h2>
+        <p class="u-text u-text-2">{{text}}</p>
       </div>
     </div>
-  </section>
-  <section class="u-clearfix u-section-3" id="sec-5ffa">
-    <div class="u-clearfix u-sheet u-sheet-1">
-      <div class="u-clearfix u-expanded-width u-gutter-10 u-layout-wrap u-layout-wrap-1">
-        <div class="u-gutter-0 u-layout">
-          <div class="u-layout-row">
-            <div class="u-align-left u-container-style u-image u-layout-cell u-shading u-size-20 u-image-1"
-              data-image-width="1750" data-image-height="1250">
-              <div class="u-container-layout u-valign-bottom u-container-layout-1" src="">
-                <h3 class="u-text u-text-1">Blog Story 2</h3>
-                <p class="u-text u-text-2">Sample text. Click to select the text box. Click again or double click to
-                  start editing the text.</p>
-              </div>
-            </div>
-            <div class="u-align-left u-container-style u-image u-layout-cell u-shading u-size-20 u-image-2"
-              data-image-width="6667" data-image-height="5000">
-              <div class="u-container-layout u-valign-bottom u-container-layout-2" src="">
-                <h3 class="u-text u-text-3"> Blog Story 3</h3>
-                <p class="u-text u-text-4">Sample text. Click to select the text box. Click again or double click to
-                  start editing the text.</p>
-              </div>
-            </div>
-            <div class="u-align-left u-container-style u-image u-layout-cell u-shading u-size-20 u-image-3"
-              data-image-width="796" data-image-height="500">
-              <div class="u-container-layout u-valign-bottom u-container-layout-3" src="">
-                <h3 class="u-text u-text-5"> Blog Story 4</h3>
-                <p class="u-text u-text-6">Sample text. Click to select the text box. Click again or double click to
-                  start editing the text.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="u-clearfix u-color-scheme-u10 u-palette-1-base u-section-4" id="sec-5e6b">
-    <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
-      <div class="u-clearfix u-expanded-width u-layout-wrap u-layout-wrap-1">
-        <div class="u-layout">
-          <div class="u-layout-row">
-            <div
-              class="u-align-center-sm u-align-center-xs u-align-left-lg u-align-left-md u-align-left-xl u-container-style u-layout-cell u-left-cell u-size-42 u-layout-cell-1">
-              <div class="u-container-layout u-valign-middle u-container-layout-1">
-                <h4 class="u-text u-text-1"> Planning to renovate your home or office space... Don’t hesitate to contact
-                  us!</h4>
-              </div>
-            </div>
-            <div class="u-align-left u-container-style u-layout-cell u-right-cell u-size-18 u-layout-cell-2">
+    <div class="u-clearfix u-expanded-width u-gutter-10 u-layout-wrap u-layout-wrap-1">
+      <div class="u-layout">
+        <div class="u-layout-row">
+          {{#each image}}
+          <div class="u-size-30">
+            <div class="u-layout-row">
               <div
-                class="u-container-layout u-valign-middle-lg u-valign-middle-md u-valign-middle-sm u-valign-middle-xs u-container-layout-2">
-                <a href="mailto:gfinteriorsekm@gmail.com?subject=Get%20A%20Quote"
-                  class="u-border-2 u-border-white u-btn u-button-style u-btn-1"> Get your quotes for free</a>
+                >
+               <img class="u-align-left u-container-style u-image u-layout-cell u-left-cell u-shading u-size-60 u-image-1"
+                data-image-width="1000" data-image-height="500" src="{{imageUrl}}" alt="Not Found">
+              </div>
+            </div>
+          </div>
+          {{/each}}
+          <div class="u-size-30">
+            <div class="u-layout-col">
+              <div class="u-align-left u-container-style u-layout-cell u-right-cell u-size-60 u-white u-layout-cell-2">
+                <div class="u-container-layout u-valign-middle u-container-layout-3">
+                  <h4 class="u-text u-text-3">{{header1}}</h4>
+                  <p class="u-text u-text-4">{{text1}}</p>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </section>
-
-
+  </div>
+</section>
+{{/each}}
+<section class="u-clearfix u-section-3" id="sec-5ffa">
+  <div class="u-clearfix u-sheet u-sheet-1">
+    <div class="u-clearfix u-expanded-width u-gutter-10 u-layout-wrap u-layout-wrap-1">
+      <div class="u-gutter-0 u-layout">
+        <div class="u-layout-row">
+          <div class="u-align-left u-container-style u-image u-layout-cell u-shading u-size-20 u-image-1"
+            data-image-width="1750" data-image-height="1250">
+            <div class="u-container-layout u-valign-bottom u-container-layout-1" src="">
+              <h3 class="u-text u-text-1">Blog Story 2</h3>
+              <p class="u-text u-text-2">Sample text. Click to select the text box. Click again or double click to
+                start editing the text.</p>
+            </div>
+          </div>
+          <div class="u-align-left u-container-style u-image u-layout-cell u-shading u-size-20 u-image-2"
+            data-image-width="6667" data-image-height="5000">
+            <div class="u-container-layout u-valign-bottom u-container-layout-2" src="">
+              <h3 class="u-text u-text-3"> Blog Story 3</h3>
+              <p class="u-text u-text-4">Sample text. Click to select the text box. Click again or double click to
+                start editing the text.</p>
+            </div>
+          </div>
+          <div class="u-align-left u-container-style u-image u-layout-cell u-shading u-size-20 u-image-3"
+            data-image-width="796" data-image-height="500">
+            <div class="u-container-layout u-valign-bottom u-container-layout-3" src="">
+              <h3 class="u-text u-text-5"> Blog Story 4</h3>
+              <p class="u-text u-text-6">Sample text. Click to select the text box. Click again or double click to
+                start editing the text.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="u-clearfix u-color-scheme-u10 u-palette-1-base u-section-4" id="sec-5e6b">
+  <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+    <div class="u-clearfix u-expanded-width u-layout-wrap u-layout-wrap-1">
+      <div class="u-layout">
+        <div class="u-layout-row">
+          <div
+            class="u-align-center-sm u-align-center-xs u-align-left-lg u-align-left-md u-align-left-xl u-container-style u-layout-cell u-left-cell u-size-42 u-layout-cell-1">
+            <div class="u-container-layout u-valign-middle u-container-layout-1">
+              <h4 class="u-text u-text-1"> Planning to renovate your home or office space... Don’t hesitate to contact
+                us!</h4>
+            </div>
+          </div>
+          <div class="u-align-left u-container-style u-layout-cell u-right-cell u-size-18 u-layout-cell-2">
+            <div
+              class="u-container-layout u-valign-middle-lg u-valign-middle-md u-valign-middle-sm u-valign-middle-xs u-container-layout-2">
+              <a href="mailto:gfinteriorsekm@gmail.com?subject=Get%20A%20Quote"
+                class="u-border-2 u-border-white u-btn u-button-style u-btn-1"> Get your quotes for free</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

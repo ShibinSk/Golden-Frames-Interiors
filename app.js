@@ -9,6 +9,7 @@ const adminRouter = require('./routes/admin');
 const { default: mongoose } = require('mongoose');
 const upload = require('./utils/multer')
 const cloudinary = require('./utils/cloudinary')
+const Handlebars = require("handlebars");
 const app = express();
 
 // view engine setup
@@ -36,6 +37,9 @@ app.use('/admin', adminRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
+});
+Handlebars.registerHelper("inc", (value) => {
+  return parseInt(value) + 1;
 });
 
 console.log('Trying to conenct to mongodb');

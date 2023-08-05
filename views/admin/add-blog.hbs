@@ -1,3 +1,175 @@
-*{
-    background-color:'blue'
-}
+<div class="main">
+    <div class="form-style-6">
+        <h1>Blog</h1>
+        <form action="/admin/add-blog" method="POST" enctype="multipart/form-data">
+            <input type="text" name="header" placeholder=" Name" />
+            <textarea name="text" placeholder="Type your Message"></textarea>
+            <input type="text" name="header1" placeholder=" Name" />
+            <textarea name="text1" placeholder="Type your Message"></textarea>
+            <input type="text" name="header2" placeholder=" Name" />
+            <textarea name="text2" placeholder="Type your Message"></textarea>
+           <div class="col-12">
+                  <div id="image-box1" style="width: 500px; height: 500px; display: none;"></div>
+                  <button class="btn btn-primary  mt-3" type="button" style="display: none;"
+                    id="crop-btn1">Crop</button>
+                </div>
+                <div class="mt-5 col-md-6">
+                  <label for="">IMAGE 1</label>
+                  <img src="https://www.generationsforpeace.org/wp-content/uploads/2018/03/empty.jpg" alt=""
+                    style="width: 100px; height:auto" id="imgView1">
+                  <input type="file" name="images" id="id_image1" class="form-control"
+                    onchange=" fileValidation1(event)" accept="image/*">
+                </div>
+           
+            <input type="submit" value="Add" />
+            
+        </form>
+    </div>
+
+</div>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.11/cropper.css">
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.11/cropper.js"></script>
+	
+
+ {{!-- <script>
+  const imagebox1 = document.getElementById('image-box1')
+  const crop_btn1 = document.getElementById('crop-btn1')
+  const input1 = document.getElementById('id_image1')
+  function fileValidation1(event) {
+
+
+    var fileInput = document.getElementById('id_image1');
+
+    var filePath = fileInput.value;
+    var allowedExtensions = /(\.jpg|\.jpeg|\.png|\.webp)$/i;
+    if (!allowedExtensions.exec(filePath)) {
+      fileInput.value = '';
+      swal("There is a problem!", "Please choose image file.");
+      return false;
+    } else {
+      document.getElementById('imgView1').src = URL.createObjectURL(event.target.files[0])
+
+    }
+
+  }
+
+  input1.addEventListener('change', () => {
+
+    const img_data1 = input1.files[0]
+    const url1 = URL.createObjectURL(img_data1)
+    imagebox1.innerHTML = `<img src="${url1}" id="image1" style="width:100%;">`
+    const image1 = document.getElementById('image1')
+    document.getElementById('image-box1').style.display = 'block'
+    document.getElementById('crop-btn1').style.display = 'block'
+    const cropper1 = new Cropper(image1, {
+      autoCropArea: 1,
+      viewMode: 1,
+      scalable: false,
+      zoomable: false,
+      movable: false,
+      minCropBoxWidth: 50,
+      minCropBoxHeight: 50,
+    })
+    crop_btn1.addEventListener('click', () => {
+      cropper1.getCroppedCanvas().toBlob((blob) => {
+        let fileInputElement1 = document.getElementById('id_image1');
+        let file1 = new File([blob], img_data1.name, { type: "image/*", lastModified: new Date().getTime() });
+        let container1 = new DataTransfer();
+        container1.items.add(file1);
+        fileInputElement1.files = container1.files;
+        document.getElementById('imgView1').src = URL.createObjectURL(fileInputElement1.files[0])
+        document.getElementById('image-box1').style.display = 'none'
+        document.getElementById('crop-btn1').style.display = 'none'
+      })
+    })
+  })
+
+  function couponApply() {
+    console.log("tisssss calll....")
+  }
+
+</script>  - --}}
+
+<style>
+    .main {}
+
+    .form-style-6 {
+        font: 95% Arial, Helvetica, sans-serif;
+        max-width: 600px;
+        margin: 10px auto;
+        padding: 16px;
+        background: #F7F7F7;
+    }
+
+    .form-style-6 h1 {
+        background: #43D1AF;
+        padding: 20px 0;
+        font-size: 140%;
+        font-weight: 300;
+        text-align: center;
+        color: #fff;
+        margin: -16px -16px 16px -16px;
+    }
+
+    .form-style-6 input[type="text"],
+    .form-style-6 input[type="date"],
+    .form-style-6 input[type="datetime"],
+    .form-style-6 input[type="email"],
+    .form-style-6 input[type="number"],
+    .form-style-6 input[type="search"],
+    .form-style-6 input[type="time"],
+    .form-style-6 input[type="url"],
+    .form-style-6 textarea,
+    .form-style-6 select {
+        -webkit-transition: all 0.30s ease-in-out;
+        -moz-transition: all 0.30s ease-in-out;
+        -ms-transition: all 0.30s ease-in-out;
+        -o-transition: all 0.30s ease-in-out;
+        outline: none;
+        box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        width: 100%;
+        background: #fff;
+        margin-bottom: 4%;
+        border: 1px solid #ccc;
+        padding: 3%;
+        color: #555;
+        font: 95% Arial, Helvetica, sans-serif;
+    }
+
+    .form-style-6 input[type="text"]:focus,
+    .form-style-6 input[type="date"]:focus,
+    .form-style-6 input[type="datetime"]:focus,
+    .form-style-6 input[type="email"]:focus,
+    .form-style-6 input[type="number"]:focus,
+    .form-style-6 input[type="search"]:focus,
+    .form-style-6 input[type="time"]:focus,
+    .form-style-6 input[type="url"]:focus,
+    .form-style-6 textarea:focus,
+    .form-style-6 select:focus {
+        box-shadow: 0 0 5px #43D1AF;
+        padding: 3%;
+        border: 1px solid #43D1AF;
+    }
+
+    .form-style-6 input[type="submit"],
+    .form-style-6 input[type="button"] {
+        box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        width: 100%;
+        padding: 3%;
+        background: #43D1AF;
+        border-bottom: 2px solid #30C29E;
+        border-top-style: none;
+        border-right-style: none;
+        border-left-style: none;
+        color: #fff;
+    }
+
+    .form-style-6 input[type="submit"]:hover,
+    .form-style-6 input[type="button"]:hover {
+        background: #2EBC99;
+    }
+</style>

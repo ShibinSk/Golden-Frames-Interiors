@@ -7,7 +7,7 @@ const gallerySchema = new mongoose.Schema({
     id: String,
   }],
   alt: String,
-});
+},{timestamps: true});
 
 const Gallery = mongoose.model('Gallery', gallerySchema);
 

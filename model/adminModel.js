@@ -14,7 +14,7 @@ const adminSchema = new Schema({
   password: { type: String, required: true },
   access: { type: Boolean, required: false },
  
-});
+},{timestamps: true});
 
 const Admin = mongoose.model("admin", adminSchema);
 

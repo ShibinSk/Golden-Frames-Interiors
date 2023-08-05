@@ -6,11 +6,6 @@
       <p class="u-large-text u-text u-text-variant u-text-2">See Our Prestigious Projects</p>
     </div>
   </section>
-  {{#each mappedData}}
-  {{this.url}}
-  {{/each}}
-  {{HY}}
-  hy
    {{!-- {{#each mappedData}}
       <!-- Access the 'image' array inside each object -->
       {{#each image}}
@@ -27,7 +22,7 @@
       {{#each image}}
           <div class="u-effect-fade u-effect-hover-zoom u-gallery-item">
             <div class="u-back-slide" data-image-width="889" data-image-height="500">
-              <img class="u-back-image u-expanded" src="{{imageUrl}}" alt="{{../alt}}">
+              <img class="u-back-image u-expanded" src="{{imageUrl}}" alt="{{alt}}">
             </div>
             <div class="u-over-slide u-shading u-over-slide-1"></div>
           </div>

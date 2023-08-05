@@ -11,15 +11,20 @@
     <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
       <div class="u-expanded-width u-list u-list-1">
         <div class="u-repeater u-repeater-1">
+          {{#each mappedTestimonial}}
+      <!-- Access the 'image' array inside each object -->
+      {{#each Testimonials}}
+         
           <div class="u-align-center u-container-style u-list-item u-repeater-item">
             <div class="u-container-layout u-similar-container u-container-layout-1">
-              <h4 class="u-align-center u-text u-text-1">Customer Name 1</h4>
+              <h4 class="u-align-center u-text u-text-1">{{name}}</h4>
               <p class="u-text u-text-default u-text-palette-2-base u-text-2">Service Aquired</p>
-              <p class="u-text u-text-3">Glavi amet ritnisl libero molestie ante ut fringilla purus eros quis glavrid
-                from dolor amet iquam lorem bibendum</p>
+              <p class="u-text u-text-3">{{text}}</p>
             </div>
           </div>
-          <div class="u-align-center u-container-style u-list-item u-repeater-item">
+ {{/each}}
+    {{/each}}
+          {{!-- <div class="u-align-center u-container-style u-list-item u-repeater-item">
             <div class="u-container-layout u-similar-container u-container-layout-2">
               <h4 class="u-align-center u-text u-text-4"> Customer Name 2</h4>
               <p class="u-text u-text-default u-text-palette-2-base u-text-5"> Service Aquired</p>
@@ -42,7 +47,7 @@
               <p class="u-text u-text-12">Glavi amet ritnisl libero molestie ante ut fringilla purus eros quis glavrid
                 from dolor amet iquam lorem bibendum</p>
             </div>
-          </div>
+          </div> --}}
         </div>
       </div>
     </div>

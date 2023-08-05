@@ -1,11 +1,13 @@
 const Admin = require("../model/adminModel");
 const bcrypt = require("bcrypt");
 const bcryptjs = require("bcryptjs");
-const upload =require('../utils/multer')
-const cloudinary =require('../utils/cloudinary')
-const fs=require('fs');
+const upload = require("../utils/multer");
+const cloudinary = require("../utils/cloudinary");
+const fs = require("fs");
 const Gallery = require("../model/adminIGalleryModel");
 const Testimonials = require("../model/testimonials");
+const HomeBlogData = require("../model/HomeBlogmodel");
+const { ObjectId, default: mongoose } = require('mongoose');
 exports.adminLoginGet = async (req, res) => {
   try {
     res.render("admin/adminLogin", { navside: true });
@@ -57,7 +59,39 @@ exports.adminLoginPost = async (req, res) => {
 
 exports.adminGetGallery = async (req, res) => {
   try {
-    res.render("admin/adminGallery", { admin: true });
+
+    const data = await Gallery.find();
+    console.log(data, "data")
+    const result = data.map((item) => {
+      // Map through the 'image' array inside each object
+      const mappedImages = item.image.map((imageObj) => {
+        return {
+          imageUrl: imageObj.url,
+          alt: item.alt,
+          _id:imageObj._id
+
+        
+          // Add more properties if needed
+        };
+      });
+
+      // Return the updated item with the mapped images array
+      return {
+        ...item,
+        image: mappedImages,
+      };
+    });
+
+    console.log(result[0]);
+
+    // Pass both the original 'data' array and the mapped 'result' array to the view
+    // res.render("index/Gallery", {
+    //   admin: false,
+    //   data: data,
+    //   mappedData: result,
+    // });
+
+    res.render("admin/adminGallery", { admin: true,data: data, mappedData: result });
   } catch (error) {}
 };
 
@@ -92,6 +126,7 @@ exports.addGalleryImagesPost = async (req, res) => {
     if (!existingDocument) {
       const newGallery = new Gallery({
         image: url,
+        _id: new mongoose.Types.ObjectId(),
         alt: req.body.alt,
       });
       await newGallery.save();
@@ -103,48 +138,43 @@ exports.addGalleryImagesPost = async (req, res) => {
       await existingDocument.save();
     }
 
-    res.render("admin/addGalleryImages", { admin: true });
+    res.redirect("/admin/adminGallery");
   } catch (error) {
     console.log(error);
   }
 };
 
 
+exports.DeleteGalleryImages = async (req, res) => {
+  try {
+    console.log(req.params.id)
+    // const result = await Gallery.deleteOne(
+    //   {},
+    //   { $pull: { image: { _id: ObjectId(req.params.id)  } } }
+    // );
+    res.redirect("/admin/adminGallery");
+  } catch (error) {
+    console.log(error);
+    res.status(500).send("Internal Server Error");
+  }
+};
 
-exports.addTestimonials=(req,res)=>{
+exports.addTestimonials = (req, res) => {
   try {
     res.render("admin/add-Testimonials", { admin: true });
-    
-  } catch (error) {
-    
-  }
-}
-exports.addTestimonialsPost= async(req,res)=>{
+  } catch (error) {}
+};
+exports.addTestimonialsPost = async (req, res) => {
   try {
-    console.log(req.body)
+    console.log(req.body);
     // await Testimonials.insertMany(req.body)
-   const newtestimonials = new Testimonials({
-    Testimonials:{
-      name:req.body.name,
-      text:req.body.text
-    },
-    
-   })
-   await newtestimonials.save()
-    res.render("admin/add-Testimonials", { admin: true });
-    
-  } catch (error) {
-    
-  }
-}
-
-exports.addBlog=(req,res)=>{
-  try {
-    res.render("admin/add-blog", { admin: true });
-    
-  } catch (error) {
-    
-  }
-}
-
-
+    const newtestimonials = new Testimonials({
+      Testimonials: {
+        name: req.body.name,
+        text: req.body.text,
+      },
+    });
+    await newtestimonials.save();
+    res.render("admin/successTest", { admin: true });
+  } catch (error) {}
+};

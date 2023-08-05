@@ -6,7 +6,7 @@ const testimonialsSchema = new mongoose.Schema({
     name: String,
     text: String,
   }],
-});
+},{timestamps: true});
 
 const Testimonials = mongoose.model('testimonials', testimonialsSchema);
 
