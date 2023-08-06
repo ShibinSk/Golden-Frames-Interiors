@@ -48,26 +48,26 @@ router.get("/gallery", async function (req, res, next) {
 
 router.get("/Testimonials", async function (req, res, next) {
   try {
-    // const testimonial = await Testimonials.find();
-    // console.log(testimonial);
-    // const testimonialData = testimonial.map((item) => {
-    //   const mappedTestimonial = item.Testimonials.map((DataObj) => {
-    //     return {
-    //       name: DataObj.name,
-    //       text: DataObj.text,
-    //     };
-    //   });
+    const testimonial = await Testimonials.find();
+    console.log(testimonial);
+    const testimonialData = testimonial.map((item) => {
+      const mappedTestimonial = item.Testimonials.map((DataObj) => {
+        return {
+          name: DataObj.name,
+          text: DataObj.text,
+        };
+      });
 
-    //   return {
-    //     ...item,
-    //     Testimonials: mappedTestimonial,
-    //   };
-    // });
+      return {
+        ...item,
+        Testimonials: mappedTestimonial,
+      };
+    });
 
     res.render("index/Testimonials", {
       admin: false,
-      // testimonial: testimonial,
-      // mappedTestimonial: testimonialData,
+      testimonial: testimonial,
+      mappedTestimonial: testimonialData,
     });
   } catch (error) {}
 });
