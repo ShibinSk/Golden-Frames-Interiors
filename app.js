@@ -11,6 +11,7 @@ const upload = require('./utils/multer')
 const cloudinary = require('./utils/cloudinary')
 const Handlebars = require("handlebars");
 const app = express();
+const dotenv = require('dotenv')
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -48,7 +49,10 @@ mongoose.connect(process.env.MONGO_DB ?? 'mongodb://127.0.0.1:27017/GFI').then((
 })
   .catch(console.log);
 
-
+  const PORT = (process.env.PORT || '3000');
+  app.listen(PORT,()=>{
+    console.log(" Connected " + PORT)
+  })
 
 // error handler
 app.use(function(err, req, res, next) {
@@ -60,5 +64,6 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
 
 module.exports = app;
