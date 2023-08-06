@@ -12,6 +12,7 @@ const cloudinary = require('./utils/cloudinary')
 const Handlebars = require("handlebars");
 const app = express();
 const dotenv = require('dotenv')
+const bodyParser = require('body-parser');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -27,6 +28,7 @@ app.engine('hbs', hbs.engine({
 
 
 app.use(logger('dev'));
+app.use(bodyParser.json());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
