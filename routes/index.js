@@ -17,7 +17,7 @@ router.get("/services", function (req, res, next) {
 router.get("/gallery", async function (req, res, next) {
   try {
     const data = await Gallery.find();
-    const result = data.map((item) => {
+    const result =  data.map((item) => {
       // Map through the 'image' array inside each object
       const mappedImages = item.image.map((imageObj) => {
         return {
@@ -34,7 +34,6 @@ router.get("/gallery", async function (req, res, next) {
       };
     });
 
-    console.log(result);
 
     // Pass both the original 'data' array and the mapped 'result' array to the view
     res.render("index/Gallery", {
@@ -42,7 +41,9 @@ router.get("/gallery", async function (req, res, next) {
       data: data,
       mappedData: result,
     });
-  } catch (error) {}
+  } catch (error) {
+    console.log(error)
+  }
 });
 
 router.get("/Testimonials", async function (req, res, next) {
