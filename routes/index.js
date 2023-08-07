@@ -3,6 +3,7 @@ var router = express.Router();
 const Gallery = require("../model/adminIGalleryModel");
 const Testimonials = require("../model/testimonials");
 const HomePageBlog = require("../model/HomeBlogmodel");
+const storyBlog = require("../model/blogStoryModel");
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
@@ -17,7 +18,7 @@ router.get("/services", function (req, res, next) {
 router.get("/gallery", async function (req, res, next) {
   try {
     const data = await Gallery.find();
-    const result =  data.map((item) => {
+    const result = data.map((item) => {
       // Map through the 'image' array inside each object
       const mappedImages = item.image.map((imageObj) => {
         return {
@@ -34,7 +35,6 @@ router.get("/gallery", async function (req, res, next) {
       };
     });
 
-
     // Pass both the original 'data' array and the mapped 'result' array to the view
     res.render("index/Gallery", {
       admin: false,
@@ -42,7 +42,7 @@ router.get("/gallery", async function (req, res, next) {
       mappedData: result,
     });
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
 });
 
@@ -55,7 +55,7 @@ router.get("/Testimonials", async function (req, res, next) {
         return {
           name: DataObj.name,
           text: DataObj.text,
-          serviceAquired: DataObj.serviceAquired
+          serviceAquired: DataObj.serviceAquired,
         };
       });
 
@@ -74,27 +74,52 @@ router.get("/Testimonials", async function (req, res, next) {
 });
 router.get("/Blog", async function (req, res, next) {
   try {
+    
     const blogdata = await HomePageBlog.find();
     console.log(blogdata);
-    const blogresult =  blogdata.map((item) => {
+    const blogresult = blogdata.map((item) => {
       const mappedImages = item.image.map((imageObj) => {
         return {
           imageUrl: imageObj.url,
-
         };
       });
       return {
         ...item,
-        text:item.text,
-        text1:item.text1,
-        text2:item.text2,
-        header:item.header,
-        header1:item.header1,
-        header2:item.header2,
+        text: item.text,
+        text1: item.text1,
+        text2: item.text2,
+        header: item.header,
+        header1: item.header1,
+        header2: item.header2,
         image: mappedImages,
       };
     });
-    res.render("index/Blog", { admin: false, data: blogdata, mappedData: blogresult });
+    const Storyblogdata = await storyBlog.find();
+    console.log(Storyblogdata);
+    const Storyblogresult = Storyblogdata.map((item) => {
+      const mappedImages = item.image.map((imageObj) => {
+        return {
+          imageUrl: imageObj.url,
+        };
+      });
+      return {
+        ...item,
+        text: item.text,
+        text1: item.text1,
+        text2: item.text2,
+        header: item.header,
+        header1: item.header1,
+        header2: item.header2,
+        image: mappedImages,
+      };
+    });
+    res.render("index/Blog", {
+      admin: false,
+      data: blogdata,
+      mappedData: blogresult,
+      storyDataMapped: Storyblogresult,
+      storyData: Storyblogdata,
+    });
   } catch (error) {}
 });
 router.get("/Contact", function (req, res, next) {

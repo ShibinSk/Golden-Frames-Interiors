@@ -10,10 +10,11 @@
         {{!-- <span class="profession">GFI</span> --}}
       </div>
     </div>
-
     <i class='bx bx-chevron-right toggle'></i>
   </header>
-
+ 
+{{name}}
+{{access}}
   <div class="menu-bar">
     <div class="menu">
 
@@ -34,6 +35,13 @@
           <a href="/admin/add-blog">
             <i class='bx bx-bar-chart-alt-2 icon'></i>
             <span class="text nav-text pe-4">Blog</span>
+          </a>
+        </li>
+
+        <li class="nav-link">
+          <a href="/admin/add-blogStory">
+            <i class='bx bx-bar-chart-alt-2 icon'></i>
+            <span class="text nav-text pe-4">Blog Story</span>
           </a>
         </li>
 
@@ -80,18 +88,20 @@
       </ul>
     </div>
 
-    <div class="bottom-content">
+    <div class="">
       <li class="">
-        <a href="#">
+        <a href="/admin/logout">
           <i class='bx bx-log-out icon'></i>
           <span class="text nav-text">Logout</span>
         </a>
 
+         
+         {{#if access }}
         
         <div class="btn-group dropup pl-1.5">
           <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown"
             aria-expanded="false">
-            Options
+         SuperAdmin
           </button>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" onclick="window.dialog.showModal();" href="#">Add Admin</a></li>
@@ -101,10 +111,25 @@
             <!-- Dropdown menu links -->
           </ul>
         </div>
+        {{else}}
+        <div class="btn-group dropup pl-1.5">
+          <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown"
+            aria-expanded="false">
+
+          {{name}}
+          </button>
+          <ul class="dropdown-menu">
+            {{!-- <li><a class="dropdown-item" onclick="window.dialog.showModal();" href="#">Add Admin</a></li> --}}
+            <li><a class="dropdown-item" href="#">Change Name</a></li>
+            <li><a class="dropdown-item" href="#">Change Password</a></li>
+            {{!-- <li><a class="dropdown-item" href="/admin/view-allUsers/">User List</a></li> --}}
+            <!-- Dropdown menu links -->
+          </ul>
+        </div>
       </li>
     </div>
   </div>
-
+{{/if}}
 
   <!-- Default dropup button -->
 

@@ -20,14 +20,24 @@
            {{#each mappedData}}
       <!-- Access the 'image' array inside each object -->
       {{#each image}}
-          <div class="u-effect-fade u-effect-hover-zoom u-gallery-item">
-            <div class="u-back-slide" data-image-width="889" data-image-height="500">
+          {{!-- <div class="u-effect-fade u-effect-hover-zoom u-gallery-item">
+            <div class="u-back-slide" data-image-width="1000" data-image-height="500">
               <img class="u-back-image u-expanded" src="{{imageUrl}}" alt="{{alt}}">
-            </div>
             <div class="u-over-slide u-shading u-over-slide-1"></div>
+            </div>
+          </div> --}}
+          <div class="u-size-30">
+            <div class="u-layout-row">
+              <div
+                >
+               <img class="u-align-left u-container-style u-image u-layout-cell u-left-cell u-shading u-size-60 u-image-1"
+                data-image-width="1000" data-image-height="500" src="{{imageUrl}}" alt="Not Found">
+              </div>
+            </div>
           </div>
  {{/each}}
     {{/each}}
+        
         </div>
       </div>
     </div>
@@ -40,9 +50,9 @@
             <div
               class="u-align-center-sm u-align-center-xs u-align-left-lg u-align-left-md u-align-left-xl u-container-style u-layout-cell u-left-cell u-size-42 u-layout-cell-1">
               <div class="u-container-layout u-valign-middle u-container-layout-1">
-              <h4 class="u-text u-text-1"> Planning to renovate your home or office space... Don’t hesitate to contact
-                us!</h4>
-            </div>
+                <h4 class="u-text u-text-1"> Planning to renovate your home or office space... Don’t hesitate to contact
+                  us!</h4>
+              </div>
             </div>
             <div class="u-align-left u-container-style u-layout-cell u-right-cell u-size-18 u-layout-cell-2">
               <div

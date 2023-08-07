@@ -13,7 +13,12 @@ const session = require("express-session");
 
 exports.superadminLoginGet = async (req, res) => {
   try {
-    res.render("admin/adminLogin", { navside: true });
+    if(req.session.loggedIn){
+      res.render("admin/adminHome", { admin: true, message: "Logged",data: req.session.admin});
+    }else{
+
+      res.render("admin/adminLogin", { navside: true });
+    }
   } catch (error) {
     console.log(error);
   }
@@ -21,42 +26,51 @@ exports.superadminLoginGet = async (req, res) => {
 
 exports.superadminLoginPost = async (req, res) => {
   try {
-    // console.log(session,"session")
-    // const result = await Admin.findOne({ email: req.body.email });
-    // const data = await Admin.findOne({});
-    // if (!result || '') {
-    //   res.render("admin/adminLogin", {
-    //     navside: true,
-    //     message: "incorrect Email",
-    //   });
-    // } else {
-    //   res.render("admin/adminHome", { admin: true, message: "Logged" });
-    // }
+    console.log(session,"session")
 
-    // if (
-    //   result.password &&
-    //   !(await bcryptjs.compare(req.body.password, result.password.toString()))
-    // ) {
-    //   res.render("admin/adminLogin", {
-    //     navside: true,
-    //     message: "incorrect password",
-    //   });
-    // }
+    const result = await Admin.findOne({ email: req.body.email });
 
-    console.log(req.body);
-    const pass= await bcrypt.hash(req.body.password, 10);
-    const admin= new Admin({
-        email: req.body.email,
-        name:req.body.lastName,
-        password: pass,
-        access:true,
-    })
+    // req.session.admin=result;
 
-    await admin.save()
-    req.session.user=req.body.name
-    console.log(res.session.user)
+    if (!result) {
+      res.render("admin/adminLogin", {
+        navside: true,
+        message: "Incorrect Email",
+      });
+    } else {
+      req.session.admin = result;
+      req.session.loggedIn = true;
+      console.log( req.session.admin.access, " req.session.admin")
+      res.render("admin/adminHome", { admin: true, message: "Logged", access: req.session.admin.access, name:req.session.admin.name });
+    }
 
-    res.render('admin/adminHome' ,{admin:true, message:'Logged'})
+    if (
+      result.password &&
+      !(await bcryptjs.compare(req.body.password, result.password.toString()))
+    ) {
+      res.render("admin/adminLogin", {
+        navside: true,
+        message: "incorrect password",
+      });
+    }
+
+    // console.log(req.body);
+    // const pass= await bcrypt.hash(req.body.password, 10);
+    // const admin= new Admin({
+    //     email: req.body.email,
+    //     name:req.body.lastName,
+    //     password: pass,
+    //     access:true,
+    // })
+
+    // await admin.save()
+    
+    // req.session.email=req.body.email,
+    // // req.session.email=req.email.email,
+    // console.log(req.session.email, "session")
+    // console.log(res.session.user)
+
+    // res.render('admin/adminHome' ,{admin:true, message:'Logged'})
   } catch (error) {
     console.log(error);
   }
@@ -100,6 +114,12 @@ exports.adminLoginPost = async (req, res) => {
   }
 };
 
+exports.logoutget=(req,res)=>{
+  req.session.destroy()
+  res.render("admin/adminLogin", { navside: true });
+}
+
+
 exports.adminGetGallery = async (req, res) => {
   try {
 
@@ -134,7 +154,7 @@ exports.adminGetGallery = async (req, res) => {
     //   mappedData: result,
     // });
 
-    res.render("admin/adminGallery", { admin: true,data: data, mappedData: result });
+    res.render("admin/adminGallery", { admin: true,data: data, mappedData: result, access: req.session.admin.access, name:req.session.admin.name });
   } catch (error) {}
 };
 
@@ -202,9 +222,21 @@ exports.DeleteGalleryImages = async (req, res) => {
   }
 };
 
+exports.editGallary = async (req, res) => {
+  try {
+    console.log(req.params.id)
+    const datas = await Gallery.findByIdAndUpdate({_id:req.params.id})
+    console.log(datas)
+    res.render("admin/addGalleryImages", { admin: true });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send("Internal Server Error");
+  }
+};
+
 exports.addTestimonials = (req, res) => {
   try {
-    res.render("admin/add-Testimonials", { admin: true });
+    res.render("admin/add-Testimonials", { admin: true , access: req.session.admin.access, name:req.session.admin.name});
   } catch (error) {}
 };
 exports.addTestimonialsPost = async (req, res) => {

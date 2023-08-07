@@ -15,7 +15,7 @@ exports.isLogout=(req,res,next)=>{
     if(req.session.loggedIn){
        next();
     }else{
-        res.redirect("/User/login")
+        res.render("admin/adminLogin", { navside: true });
     }
 
 }
