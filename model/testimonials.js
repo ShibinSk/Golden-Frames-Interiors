@@ -5,6 +5,7 @@ const testimonialsSchema = new mongoose.Schema({
   Testimonials: [{
     name: String,
     text: String,
+    serviceAquired:String
   }],
 },{timestamps: true});
 

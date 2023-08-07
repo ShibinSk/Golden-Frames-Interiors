@@ -2,12 +2,15 @@ var express = require('express');
 var router = express.Router();
 const AdminController =require('../Controllers/AdminController')
 const BlogHomeController =require('../Controllers/BlogController')
+const MidleWare=require('../Midalware/adminMidleware')
 const upload =require('../utils/multer')
 /* GET users listing. */
 
-router.get('/',AdminController.adminLoginGet)
+router.get('/',AdminController.superadminLoginGet)
 
-router.post('/adminLogin',AdminController.adminLoginPost)
+router.post('/adminLogin',MidleWare.isLogin, AdminController.superadminLoginPost)
+
+router.post('/add-admin',AdminController.adminLoginPost)
 /**
  * ====================================================================================================
  */
@@ -36,4 +39,11 @@ router.post('/add-Testimonials',AdminController.addTestimonialsPost)
 router.get('/add-blog',BlogHomeController.addBlog)
 router.post('/add-blog', upload.array('images', 4),BlogHomeController.addBlogPost)
 // router.get('/about',AdminController.abott)
+
+
+router.get('/view-allUsers',AdminController.ViewAllUsers)
+
+router.get('/dltAdmin/:id',AdminController.dltAdmin)
+
 module.exports = router;
+

@@ -55,6 +55,7 @@ router.get("/Testimonials", async function (req, res, next) {
         return {
           name: DataObj.name,
           text: DataObj.text,
+          serviceAquired: DataObj.serviceAquired
         };
       });
 

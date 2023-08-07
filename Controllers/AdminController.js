@@ -8,7 +8,10 @@ const Gallery = require("../model/adminIGalleryModel");
 const Testimonials = require("../model/testimonials");
 const HomeBlogData = require("../model/HomeBlogmodel");
 const { ObjectId, default: mongoose } = require('mongoose');
-exports.adminLoginGet = async (req, res) => {
+const session = require("express-session");
+
+
+exports.superadminLoginGet = async (req, res) => {
   try {
     res.render("admin/adminLogin", { navside: true });
   } catch (error) {
@@ -16,42 +19,82 @@ exports.adminLoginGet = async (req, res) => {
   }
 };
 
+exports.superadminLoginPost = async (req, res) => {
+  try {
+    // console.log(session,"session")
+    // const result = await Admin.findOne({ email: req.body.email });
+    // const data = await Admin.findOne({});
+    // if (!result || '') {
+    //   res.render("admin/adminLogin", {
+    //     navside: true,
+    //     message: "incorrect Email",
+    //   });
+    // } else {
+    //   res.render("admin/adminHome", { admin: true, message: "Logged" });
+    // }
+
+    // if (
+    //   result.password &&
+    //   !(await bcryptjs.compare(req.body.password, result.password.toString()))
+    // ) {
+    //   res.render("admin/adminLogin", {
+    //     navside: true,
+    //     message: "incorrect password",
+    //   });
+    // }
+
+    console.log(req.body);
+    const pass= await bcrypt.hash(req.body.password, 10);
+    const admin= new Admin({
+        email: req.body.email,
+        name:req.body.lastName,
+        password: pass,
+        access:true,
+    })
+
+    await admin.save()
+    req.session.user=req.body.name
+    console.log(res.session.user)
+
+    res.render('admin/adminHome' ,{admin:true, message:'Logged'})
+  } catch (error) {
+    console.log(error);
+  }
+};
 exports.adminLoginPost = async (req, res) => {
   try {
-    const result = await Admin.findOne({ email: req.body.email });
-    if (!result) {
-      res.render("admin/adminLogin", {
-        navside: true,
-        message: "incorrect Email",
-      });
-    } else {
-      res.render("admin/adminHome", { admin: true, message: "Logged" });
-    }
+    // const result = await Admin.findOne({ email: req.body.email });
+    // if (!result) {
+    //   res.render("admin/adminLogin", {
+    //     navside: true,
+    //     message: "Already Exit",
+    //   });
+    // } else {
+    //   res.render("admin/adminHome", { admin: true, message: "Logged" });
+    // }
 
-    if (
-      result.password &&
-      !(await bcryptjs.compare(req.body.password, result.password.toString()))
-    ) {
-      res.render("admin/adminLogin", {
-        navside: true,
-        message: "incorrect password",
-      });
-    }
+    // if (
+    //   result.password &&
+    //   !(await bcryptjs.compare(req.body.password, result.password.toString()))
+    // ) {
+    //   res.render("admin/adminLogin", {
+    //     navside: true,
+    //     message: "incorrect password",
+    //   });
+    // }
 
-    // console.log(req.body);
-    // const pass= await bcrypt.hash(req.body.password, 10);
-    // const admin= new Admin({
-    //     email: req.body.email,
-    //     firstName:req.body.firstName,
-    //     lastName:req.body.lastName,
-    //     password: pass,
-    //     testimonials:null,
-    //     access:true,
-    // })
+    console.log(req.body);
+    const pass= await bcrypt.hash(req.body.password, 10);
+    const admin= new Admin({
+        email: req.body.email,
+        name:req.body.name,
+        password: pass,
+        access:false,
+    })
 
-    // await admin.save()
+    await admin.save()
 
-    // res.render('admin/adminHome' ,{admin:true, message:'Logged'})
+    res.render("admin/successddAdmin", { admin: true ,message:"Added New Admin"});
   } catch (error) {
     console.log(error);
   }
@@ -172,9 +215,46 @@ exports.addTestimonialsPost = async (req, res) => {
       Testimonials: {
         name: req.body.name,
         text: req.body.text,
+        serviceAquired: req.body.serviceAquired
       },
     });
     await newtestimonials.save();
     res.render("admin/successTest", { admin: true });
   } catch (error) {}
 };
+
+
+exports.ViewAllUsers= async(req,res)=>{
+  try {
+
+const data=await Admin.find({access:"false"})
+console.log(data)
+const result =data.map((item)=>{
+  return{
+    name: item.name,
+    email: item.email,
+    id:item._id
+  }
+})
+console.log(result,"data")
+
+   res.render("admin/view-allUsers", { admin: true, users:result });
+    
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+exports.dltAdmin= async(req,res)=>{
+  try {
+console.log(req.params.id)
+const data=await Admin.deleteOne({_id:req.params.id})
+// console.log(result,"data")
+
+  //  res.render("admin/view-allUsers");
+   res.redirect('/admin/view-allUsers');
+    
+  } catch (error) {
+    console.log(error)
+  }
+}

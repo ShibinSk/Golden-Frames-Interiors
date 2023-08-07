@@ -2,7 +2,7 @@
   <header>
     <div class="image-text">
       <span class="image">
-        <a href=""><img style="width: 60px; height: 50px;" src="/images/logo.png" alt="z"></a>
+        <a href=" "><img style="width: 60px; height: 50px;" src="/images/logo.png" alt="z"></a>
       </span>
 
       <div class="text logo-text">
@@ -94,10 +94,10 @@
             Options
           </button>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Add Admin</a></li>
+            <li><a class="dropdown-item" onclick="window.dialog.showModal();" href="#">Add Admin</a></li>
             <li><a class="dropdown-item" href="#">Change Name</a></li>
             <li><a class="dropdown-item" href="#">Change Password</a></li>
-            <li><a class="dropdown-item" href="#">User List</a></li>
+            <li><a class="dropdown-item" href="/admin/view-allUsers/">User List</a></li>
             <!-- Dropdown menu links -->
           </ul>
         </div>
@@ -110,6 +110,36 @@
 
 </nav>
 
+<!-- Modal -->
+<dialog id="dialog">
+	<form action="/admin/add-admin" method="POST">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Name</label>
+    <input name="name" type="text" class="form-control" id="exampleInputText" aria-describedby="textlHelp" placeholder="Enter name">
+    {{!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> --}}
+  </div>
+  {{!-- <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div> --}}
+  <div class="form-group">
+    <label  for="exampleInputPassword1">Password</label>
+    <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+  </div>
+  {{!-- <div class="form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+  </div> --}}
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+	<button onclick="window.dialog.close();" aria-label="close" class="x">❌</button>
+</dialog>
 <style>
   /*!
  * Bootstrap v4.1.1 (https://getbootstrap.com/)
@@ -125,6 +155,92 @@
   
  } */
 
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+:root {
+	--vs-primary: 29 92 255;
+}
+
+/*Dialog Styles*/
+dialog {
+      margin-left: 34%;
+
+  align-items: center;
+	padding: 1rem 3rem;
+	background: white;
+	max-width: 400px;
+	padding-top: 2rem;
+	border-radius: 20px;
+	border: 0;
+	box-shadow: 0 5px 30px 0 rgb(0 0 0 / 10%);
+	animation: fadeIn 1s ease both;
+	&::backdrop {
+		animation: fadeIn 1s ease both;
+		background: rgb(255 255 255 / 40%);
+		z-index: 2;
+		backdrop-filter: blur(20px);
+	}
+	.x {
+		filter: grayscale(1);
+		border: none;
+		background: none;
+		position: absolute;
+		top: 15px;
+		right: 10px;
+		transition: ease filter, transform 0.3s;
+		cursor: pointer;
+		transform-origin: center;
+		&:hover {
+			filter: grayscale(0);
+			transform: scale(1.1);
+		}
+	}
+	h2 {
+		font-weight: 600;
+		font-size: 2rem;
+		padding-bottom: 1rem;
+	}
+	p {
+		font-size: 1rem;
+		line-height: 1.3rem;
+		padding: 0.5rem 0;
+		a {
+			&:visited {
+				color: rgb(var(--vs-primary));
+			}
+		}
+	}
+}
+
+/*General Styles*/
+
+button.primary {
+	display: inline-block;
+	font-size: 0.8rem;
+	color: #fff !important;
+	background: rgb(var(--vs-primary) / 100%);
+	padding: 13px 25px;
+	border-radius: 17px;
+	transition: background-color 0.1s ease;
+	box-sizing: border-box;
+	transition: all 0.25s ease;
+	border: 0;
+	cursor: pointer;
+	box-shadow: 0 10px 20px -10px rgb(var(--vs-primary) / 50%);
+	&:hover {
+		box-shadow: 0 20px 20px -10px rgb(var(--vs-primary) / 50%);
+		transform: translateY(-5px);
+	}
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
 
 
 

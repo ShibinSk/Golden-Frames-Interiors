@@ -42248,7 +42248,7 @@
 }
 
 .u-section-3 .u-text-1 {
-  font-size: 3rem;
+  /* font-size: 3rem; */
   --animation-custom_in-translate_x: 0px;
   --animation-custom_in-translate_y: 0px;
   --animation-custom_in-opacity: 0;
