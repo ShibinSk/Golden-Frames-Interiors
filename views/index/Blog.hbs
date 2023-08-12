@@ -71,18 +71,19 @@
           </div>
         {{/each}}  --}}
           {{#each storyDataMapped}}
-            {{#each image}}
-         <div class="u-align-left u-container-style u-image u-layout-cell u-shading u-size-20 u-image-1" data-image-width="1750" data-image-height="1250">
-                <div class="u-container-layout u-valign-bottom u-container-layout-1" src="{{imageUrl}}">
-                 <a href="/Blog-Story-page1?id={{_id}}">
-                   <img style="width: 45vh; height: 80vh;" src="{{imageUrl}}" alt="">
-                 </a>
-                  <h3 class="u-text u-text-1">{{../header}}</h3>
-                  <p class="u-text u-text-2">{{../text}}</p>
-                </div>
-              </div>
-              {{/each}}
-              {{/each}}
+  {{#each image}}
+    <div class="u-align-left u-container-style u-image u-layout-cell u-shading u-size-20 u-image-1" data-image-width="1750" data-image-height="1250">
+      <div class="u-container-layout u-container-layout-1">
+        <a href="/Blog-Story-page1?id={{_id}}">
+          <img style="width: 48vh; height: 80vh;" src="{{imageUrl}}" alt="">
+        </a>
+        <div class="u-text u-text-2">{{../header}}</div>
+        <div class="u-text u-text-2">{{../text}}</div>
+      </div>
+    </div>
+  {{/each}}
+{{/each}}
+
 
         </div>
       </div>

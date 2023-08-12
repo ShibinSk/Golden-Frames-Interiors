@@ -18,7 +18,7 @@ router.get('/logout',AdminController.logoutget)
 /**
  * ====================================================================================================
  */
-router.get('/adminGallery', AdminController.adminGetGallery)
+router.get('/adminGallery',userMiddlewere.isLogout, AdminController.adminGetGallery)
 
 router.get('/addGalleryImages',AdminController.addGalleryImages)
 
@@ -34,10 +34,14 @@ router.get('/edit-gallary/:id',AdminController.editGallary)
  * ====================================================================================================
  */
 
-router.get('/add-Testimonials',AdminController.addTestimonials)
+router.get('/add-Testimonials',userMiddlewere.isLogout,AdminController.addTestimonials)
 router.post('/add-Testimonials',AdminController.addTestimonialsPost)
 
 router.get('/view-Testimonials',AdminController.viewTestimonials)
+
+router.get('/delete-Testimonials',AdminController.deleteTestimonials)
+
+router.get('/edit-Testimonials',AdminController.editTestimonials)
 
 
 
@@ -46,15 +50,19 @@ router.get('/view-Testimonials',AdminController.viewTestimonials)
  * ====================================================================================================
 */
 
-router.get('/add-blog',BlogHomeController.addBlog)
+router.get('/add-blog',userMiddlewere.isLogout,BlogHomeController.addBlog)
 router.post('/add-blog', upload.array('images', 4),BlogHomeController.addBlogPost)
 
 router.get('/view-blogs',BlogHomeController.viewBlog)
 
 router.get('/view-blogs/:id',BlogHomeController.deleteBlog)
 
+router.get('/edit-blogs',BlogHomeController.editBlog)
 
-router.get('/add-blogStory',BlogHomeController.blogStory)
+router.post('/edit-blogs',BlogHomeController.editBlogPost)
+
+
+router.get('/add-blogStory',userMiddlewere.isLogout,BlogHomeController.blogStory)
 
 router.post('/add-blogStory', upload.array('images', 4),BlogHomeController.blogStoryPost)
 // router.get('/about',AdminController.abott)

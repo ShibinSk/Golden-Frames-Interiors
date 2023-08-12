@@ -24906,7 +24906,7 @@
   }
   .u-body {
     color: #111111;
-    background-color: #ffffff;
+    /* background-color: #ffffff; */
     --effect-scale: 1.1;
   }
   /*end-variables color*/

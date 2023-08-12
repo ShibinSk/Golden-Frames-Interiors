@@ -74,7 +74,7 @@ router.get("/Testimonials", async function (req, res, next) {
 });
 router.get("/Blog", async function (req, res, next) {
   try {
-    const blogdata = await HomePageBlog.find();
+    const blogdata = await HomePageBlog.find().sort({ updatedAt: -1 }).limit(1) // Sort by updatedAt in descending order
     console.log(blogdata);
     const blogresult = blogdata.map((item) => {
       const mappedImages = item.image.map((imageObj) => {
@@ -93,7 +93,7 @@ router.get("/Blog", async function (req, res, next) {
         image: mappedImages,
       };
     });
-    const Storyblogdata = await storyBlog.find();
+    const Storyblogdata = await storyBlog.find().sort({ updatedAt: -1 }).limit(3)
     console.log(Storyblogdata);
     const Storyblogresult = Storyblogdata.map((item) => {
       const mappedImages = item.image.map((imageObj) => {
@@ -150,6 +150,23 @@ router.get("/Blog-Story-page1", async function (req, res) {
 
 router.get("/Contact", function (req, res, next) {
   res.render("index/Contact", { admin: false });
+});
+
+
+router.get("/Kitchen", function (req, res, next) {
+  res.render("index/Kitchen-cabinets", { admin: false });
+});
+router.get("/Wardrobes", function (req, res, next) {
+  res.render("index/Wardrobes", { admin: false });
+});
+router.get("/TV-units", function (req, res, next) {
+  res.render("index/TV-units", { admin: false });
+});
+router.get("/Customised-furniture", function (req, res, next) {
+  res.render("index/Customised-furniture", { admin: false });
+});
+router.get("/Office-Interior", function (req, res, next) {
+  res.render("index/Office-Interior", { admin: false });
 });
 
 module.exports = router;

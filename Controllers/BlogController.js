@@ -37,12 +37,50 @@ exports.deleteBlog = async(req, res) => {
     res.redirect("/admin/view-blogs");
   } catch (error) {}
 };
+exports.editBlog = async(req, res) => {
+  try {
+    const id = req.query.id;
+    console.log(id)
+  const data=  await Blogs.findOne({_id :id})
+  // console.log(data);
+    res.render("admin/editBlog",{admin: true,
+      header:data.header,
+      header1:data.header1,
+      header2:data.header2,
+      text:data.text,
+      text1:data.text1,
+      text2:data.text2,
+      image:data.image[0].url,
+      _id:data._id,
+    });
+  } catch (error) {}
+};
+
+exports.editBlogPost = async(req, res) => {
+  try {
+    console.log(req.body, 'Ediredd');
+  console.log(req.query.id);
+    const newData = await Blogs.updateOne({_id:req.query.id},{
+      $set:{
+        text:req.body.text,
+        text1:req.body.text1,
+        text2:req.body.text2,
+        header:req.body.header,
+        header1:req.body.header1,
+        header2:req.body.header2
+      }
+    })
+    res.redirect("/admin/view-blogs");
+    console.log(newData); 
+    
+  } catch (error) {}
+};
 
 
 exports.viewBlog = async (req, res) => {
   try {
     const data = await Blogs.find();
-    console.log(data, "data");
+    // console.log(data, "data");
     const result = data.map((item) => {
       // Map through the 'image' array inside each object
       const mappedImages = item.image.map((imageObj) => {

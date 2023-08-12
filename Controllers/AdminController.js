@@ -35,21 +35,40 @@ exports.superadminLoginPost = async (req, res) => {
         message: "Incorrect Email",
       });
     } else {
-      req.session.admin = result;
-      req.session.loggedIn = true;
+      const status = await bcrypt.compare(
+        req.body.password,
+        result.password
+      );
+      if (status) {
+        req.session.admin=result;
+        req.session.loggedIn=true
+        console.log(req.session.use);
+        res.render('admin/adminHome', {admin:true ,access: req.session.admin.access, name:req.session.admin.name })
+        
+    
+        console.log("done");
+      } else {
+        res.render('admin/adminLogin' ,{navside:true ,message: "Incorrect Password"})
+        console.log("fail");
+      }
+  
+      // req.session.admin = result;
+      // req.session.loggedIn = true;
       console.log( req.session.admin.access, " req.session.admin")
-      res.render("admin/adminHome", { admin: true, message: "Logged", access: req.session.admin.access, name:req.session.admin.name });
+      // res.render("admin/adminHome", { admin: true, message: "Logged", access: req.session.admin.access, name:req.session.admin.name });
     }
 
-    if (
-      result.password &&
-      !(await bcryptjs.compare(req.body.password, result.password.toString()))
-    ) {
-      res.render("admin/adminLogin", {
-        navside: true,
-        message: "incorrect password",
-      });
-    }
+    // if (
+    //   result.password &&
+    //   !(await bcryptjs.compare(req.body.password, result.password.toString()))
+    // ) {
+    //   res.render("admin/adminLogin", {
+    //     navside: true,
+    //     message: "incorrect password",
+    //   });
+    // }
+   
+    
 
     // console.log(req.body);
     // const pass= await bcrypt.hash(req.body.password, 10);
@@ -170,7 +189,7 @@ exports.addGalleryImagesPost = async (req, res) => {
     // const existingDocument = await Gallery.findOne({});
 
     let url = [];
-    
+    console.log(url, 'urs');
 
     const images = req.files;
     for (const image of images) {
@@ -259,7 +278,7 @@ exports.addTestimonialsPost = async (req, res) => {
 exports.viewTestimonials = async (req, res) => {
   try {
     const data = await Testimonials.find()
-    console.log(data,"data");
+    // console.log(data,"data");
     const result = data.map((item)=>{
     const mappeddata = item.Testimonials.map((data)=>{
 
@@ -267,11 +286,12 @@ exports.viewTestimonials = async (req, res) => {
         ...item,
         name:data.name,
         text:data.text,
-        serviceAquired:data.serviceAquired
+        serviceAquired:data.serviceAquired,
+        _id:item._id,
       }
 
     })
-      console.log(item.name,"ss")
+      // console.log(item.name,"ss")
       return{
         Testimonials:mappeddata,
 
@@ -282,6 +302,27 @@ exports.viewTestimonials = async (req, res) => {
     res.render("admin/view-Testimonials", { admin: true,mappeddata:result });
   } catch (error) {}
 };
+exports.deleteTestimonials = async (req, res) => {
+  try {
+    console.log(req.query.id,'kkk');
+
+    await Testimonials.deleteOne({_id:req.query.id})
+    res.redirect('/admin/view-Testimonials')
+
+  
+  } catch (error) {
+    console.log(error);
+  }
+};
+exports.editTestimonials = async (req, res) => {
+  try {
+    
+
+   
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 
 
@@ -289,7 +330,7 @@ exports.ViewAllUsers= async(req,res)=>{
   try {
 
 const data=await Admin.find({access:"false"})
-console.log(data)
+// console.log(data)
 const result =data.map((item)=>{
   return{
     name: item.name,

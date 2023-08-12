@@ -52,7 +52,7 @@ app.use(session({
   saveUninitialized: false,
   cookie: { 
     secure: false, // This will only work if you have https enabled!
-    maxAge: oneDay  // 1 min
+    maxAge: oneDay   // 1 min
   } 
 }));
 app.use('/', indexRouter);
