@@ -30,8 +30,7 @@
             <div class="u-layout-row">
               <div
                 >
-               <img class="u-align-left u-container-style u-image u-layout-cell u-left-cell u-shading u-size-60 u-image-1"
-                data-image-width="1000" data-image-height="500" src="{{imageUrl}}" alt="Not Found">
+              <img style="width: 60vh; height: 60vh;" src="{{imageUrl}}" alt="">
               </div>
             </div>
           </div>
@@ -57,32 +56,34 @@
     <div class="u-clearfix u-expanded-width u-gutter-10 u-layout-wrap u-layout-wrap-1">
       <div class="u-gutter-0 u-layout">
         <div class="u-layout-row">
+{{!--           
+         {{#each storyDataMapped}}
           <div class="u-align-left u-container-style u-image u-layout-cell u-shading u-size-20 u-image-1"
             data-image-width="1750" data-image-height="1250">
-            <a  href="" style="color: #ffffff; text-decoration: none; text-emphasis-style: none;">
-            <div  class="u-container-layout u-valign-bottom u-container-layout-1" src="">
-              <h3 class="u-text u-text-1">Blog Story 2</h3>
-              <p class="u-text u-text-2">Sample text. Click to select the text box. Click again or double click to
-                start editing the text.</p>
-            </div>
+
+            <a href="{{storyLink}}" style="color: #ff0000; text-decoration: none; text-emphasis-style: none;">
+              {{#each image}}
+                <img class="u-align-left u-container-style u-image u-layout-cell u-left-cell u-shading u-size-60 u-image-2"
+                data-image-width="600" data-image-height="500" src="{{imageUrl}}" alt="Not Found">
+              {{../header}}
+              {{/each}}
             </a>
           </div>
-          {{!-- <div class="u-align-left u-container-style u-image u-layout-cell u-shading u-size-20 u-image-2"
-            data-image-width="6667" data-image-height="5000">
-            <div class="u-container-layout u-valign-bottom u-container-layout-2" src="">
-              <h3 class="u-text u-text-3"> Blog Story 3</h3>
-              <p class="u-text u-text-4">Sample text. Click to select the text box. Click again or double click to
-                start editing the text.</p>
-            </div>
-          </div>
-          <div class="u-align-left u-container-style u-image u-layout-cell u-shading u-size-20 u-image-3"
-            data-image-width="796" data-image-height="500">
-            <div class="u-container-layout u-valign-bottom u-container-layout-3" src="">
-              <h3 class="u-text u-text-5"> Blog Story 4</h3>
-              <p class="u-text u-text-6">Sample text. Click to select the text box. Click again or double click to
-                start editing the text.</p>
-            </div>
-          </div> --}}
+        {{/each}}  --}}
+          {{#each storyDataMapped}}
+            {{#each image}}
+         <div class="u-align-left u-container-style u-image u-layout-cell u-shading u-size-20 u-image-1" data-image-width="1750" data-image-height="1250">
+                <div class="u-container-layout u-valign-bottom u-container-layout-1" src="{{imageUrl}}">
+                 <a href="/Blog-Story-page1?id={{_id}}">
+                   <img style="width: 45vh; height: 80vh;" src="{{imageUrl}}" alt="">
+                 </a>
+                  <h3 class="u-text u-text-1">{{../header}}</h3>
+                  <p class="u-text u-text-2">{{../text}}</p>
+                </div>
+              </div>
+              {{/each}}
+              {{/each}}
+
         </div>
       </div>
     </div>
@@ -112,3 +113,130 @@
     </div>
   </div>
 </section>
+  <footer class="u-clearfix u-footer u-grey-80" id="sec-69cd">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <a
+          href="https://gfinteriors.in/"
+          class="u-image u-logo u-image-1"
+          data-image-width="1393"
+          data-image-height="925"
+          title="Golden Frame"
+        >
+          <img
+            src="images/gfinteriorslogoLettersBright.png"
+            class="u-logo-image u-logo-image-1"
+          />
+        </a>
+        <nav
+          class="u-menu u-menu-one-level u-offcanvas u-menu-1"
+          data-responsive-from="SM"
+        >
+          <div class="menu-collapse">
+            <a class="u-button-style u-nav-link" href="#">
+              <svg class="u-svg-link" viewBox="0 0 24 24">
+                <use
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  xlink:href="#menu-hamburger"
+                ></use>
+              </svg>
+              <svg
+                class="u-svg-content"
+                version="1.1"
+                id="menu-hamburger"
+                viewBox="0 0 16 16"
+                x="0px"
+                y="0px"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g>
+                  <rect y="1" width="16" height="2"></rect>
+                  <rect y="7" width="16" height="2"></rect>
+                  <rect y="13" width="16" height="2"></rect>
+                </g>
+              </svg>
+            </a>
+          </div>
+          <div class="u-custom-menu u-nav-container">
+            <ul class="u-nav u-unstyled">
+              <li class="u-nav-item">
+                <a class="u-button-style u-nav-link" href="/">Home</a>
+              </li>
+              <li class="u-nav-item">
+                <a class="u-button-style u-nav-link" href="/About">About</a>
+              </li>
+              <li class="u-nav-item">
+                <a class="u-button-style u-nav-link" href="/Services"
+                  >Services</a
+                >
+              </li>
+              <li class="u-nav-item">
+                <a class="u-button-style u-nav-link" href="/Gallery"
+                  >Gallery</a
+                >
+              </li>
+              <li class="u-nav-item">
+                <a class="u-button-style u-nav-link" href="/Contact"
+                  >Contact</a
+                >
+              </li>
+              <li class="u-nav-item">
+                <a class="u-button-style u-nav-link" href="/admin">Login</a>
+              </li>
+            </ul>
+          </div>
+          <div class="u-custom-menu u-nav-container-collapse">
+            <div
+              class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav"
+            >
+              <div class="u-inner-container-layout u-sidenav-overflow">
+                <div class="u-menu-close"></div>
+                <ul
+                  class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"
+                >
+                  <li class="u-nav-item">
+                    <a class="u-button-style u-nav-link" href="/"
+                      >Home</a
+                    >
+                  </li>
+                  <li class="u-nav-item">
+                    <a class="u-button-style u-nav-link" href="About.html"
+                      >About</a
+                    >
+                  </li>
+                  <li class="u-nav-item">
+                    <a class="u-button-style u-nav-link" href="Services.html"
+                      >Services</a
+                    >
+                  </li>
+                  <li class="u-nav-item">
+                    <a class="u-button-style u-nav-link" href="admin/gallery"
+                      >Gallery</a
+                    >
+                  </li>
+                  <li class="u-nav-item">
+                    <a class="u-button-style u-nav-link" href="Contact.html"
+                      >Contact</a
+                    >
+                  </li>
+                  <li class="u-nav-item">
+                    <a class="u-button-style u-nav-link" href="Blog.html"
+                      >Login</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
+          </div>
+        </nav>
+        <p class="u-align-left u-text u-text-default u-text-1">
+          <a
+            class="u-active-none u-border-none u-btn u-button-link u-button-style u-hover-none u-none u-text-palette-1-base u-btn-1"
+            href="https://phoenixpro.in/"
+            target="_blank"
+            >Designed by Phoenix</a
+          >
+        </p>
+      </div>
+    </footer>

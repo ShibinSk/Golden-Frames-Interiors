@@ -74,7 +74,6 @@ router.get("/Testimonials", async function (req, res, next) {
 });
 router.get("/Blog", async function (req, res, next) {
   try {
-    
     const blogdata = await HomePageBlog.find();
     console.log(blogdata);
     const blogresult = blogdata.map((item) => {
@@ -100,6 +99,7 @@ router.get("/Blog", async function (req, res, next) {
       const mappedImages = item.image.map((imageObj) => {
         return {
           imageUrl: imageObj.url,
+          _id: item._id,
         };
       });
       return {
@@ -122,6 +122,32 @@ router.get("/Blog", async function (req, res, next) {
     });
   } catch (error) {}
 });
+
+router.get("/Blog-Story-page1", async function (req, res) {
+  try {
+    console.log(req.query.id);
+    const id = req.query._id;
+    const data = await storyBlog.findOne({ _id: req.query.id });
+    console.log(data.image[0].url, "data");
+   
+    res.render("index/Blog-Story-page1", {
+      admin: false,
+      header:data.header,
+      header1:data.header1,
+      header2:data.header2,
+      text:data.text,
+      text1:data.text1,
+      text2:data.text2,
+      image:data.image[0].url,
+    
+    });
+
+    // res.render("index/Blog-Story-page1");
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 router.get("/Contact", function (req, res, next) {
   res.render("index/Contact", { admin: false });
 });

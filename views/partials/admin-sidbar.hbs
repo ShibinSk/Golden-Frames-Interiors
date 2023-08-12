@@ -137,34 +137,61 @@
 
 <!-- Modal -->
 <dialog id="dialog">
-	<form action="/admin/add-admin" method="POST">
-  <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-    <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-  </div>
-  <div class="form-group">
-    <label for="exampleInputEmail1">Name</label>
-    <input name="name" type="text" class="form-control" id="exampleInputText" aria-describedby="textlHelp" placeholder="Enter name">
-    {{!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> --}}
-  </div>
-  {{!-- <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-  </div> --}}
-  <div class="form-group">
-    <label  for="exampleInputPassword1">Password</label>
-    <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-  </div>
-  {{!-- <div class="form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-  </div> --}}
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
-	<button onclick="window.dialog.close();" aria-label="close" class="x">❌</button>
+  <form action="/admin/add-admin" method="POST">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email address</label>
+      <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputText">Name</label>
+      <input name="name" type="text" class="form-control" id="exampleInputText" aria-describedby="textlHelp" placeholder="Enter name">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <div class="input-group">
+        <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+        <div class="input-group-append">
+          <button type="button" class="btn btn-secondary" id="generatePasswordButton">Generate</button>
+        </div>
+      </div>
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="showPasswordCheckbox">
+        <label class="form-check-label" for="showPasswordCheckbox">Show Password</label>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  <button onclick="window.dialog.close();" aria-label="close" class="x">❌</button>
 </dialog>
+
+
+<script>
+ const generatePasswordButton = document.getElementById("generatePasswordButton");
+const passwordField = document.getElementById("exampleInputPassword1");
+const showPasswordCheckbox = document.getElementById("showPasswordCheckbox");
+
+generatePasswordButton.addEventListener("click", () => {
+  const generatedPassword = generateRandomPassword(12); // Change the length as needed
+  passwordField.value = generatedPassword;
+});
+
+showPasswordCheckbox.addEventListener("change", () => {
+  passwordField.type = showPasswordCheckbox.checked ? "text" : "password";
+});
+
+function generateRandomPassword(length) {
+  const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+  let password = "";
+  for (let i = 0; i < length; i++) {
+    const randomIndex = Math.floor(Math.random() * charset.length);
+    password += charset[randomIndex];
+  }
+  return password;
+}
+
+</script>
+
 <style>
   /*!
  * Bootstrap v4.1.1 (https://getbootstrap.com/)

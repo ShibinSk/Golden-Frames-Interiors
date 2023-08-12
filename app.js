@@ -80,16 +80,7 @@ Handlebars.registerHelper( "when",function(operand_1, operator, operand_2, optio
   else  return options.inverse(this);
 });
 
-app.use(
-  session({
-    secret: 'key', // Replace with a random secret key
-    resave: false,
-    saveUninitialized: true,
-    cookie: { secure: false }, 
-    maxAge:'one day'
-    // Set secure to true if using HTTPS
-  })
-);
+
 console.log('Trying to conenct to mongodb');
 mongoose.connect('mongodb://127.0.0.1:27017/GFI').then(() => {
   console.log('Connected to mongodb');

@@ -29,9 +29,6 @@ exports.superadminLoginPost = async (req, res) => {
     console.log(session,"session")
 
     const result = await Admin.findOne({ email: req.body.email });
-
-    // req.session.admin=result;
-
     if (!result) {
       res.render("admin/adminLogin", {
         navside: true,
@@ -131,7 +128,7 @@ exports.adminGetGallery = async (req, res) => {
         return {
           imageUrl: imageObj.url,
           alt: item.alt,
-          _id:imageObj._id
+          _id:item._id
 
         
           // Add more properties if needed
@@ -170,12 +167,10 @@ exports.addGalleryImagesPost = async (req, res) => {
     const uploder = async (path) => await cloudinary.uploads(path, "Gallery");
 
     // Fetch the existing document from the collection
-    const existingDocument = await Gallery.findOne({});
+    // const existingDocument = await Gallery.findOne({});
 
     let url = [];
-    if (existingDocument && existingDocument.image) {
-      url = existingDocument.image;
-    }
+    
 
     const images = req.files;
     for (const image of images) {
@@ -186,20 +181,14 @@ exports.addGalleryImagesPost = async (req, res) => {
     }
 
     // If the existingDocument is null, create a new document
-    if (!existingDocument) {
+   
       const newGallery = new Gallery({
         image: url,
-        _id: new mongoose.Types.ObjectId(),
         alt: req.body.alt,
       });
       await newGallery.save();
-    } else {
-      // Update the existing document with the new URLs
-      existingDocument.image = url;
-      existingDocument.alt = req.body.alt; // Update the alt field if needed
-      // Save the updated document back to the collection
-      await existingDocument.save();
-    }
+  
+    
 
     res.redirect("/admin/adminGallery");
   } catch (error) {
@@ -211,23 +200,36 @@ exports.addGalleryImagesPost = async (req, res) => {
 exports.DeleteGalleryImages = async (req, res) => {
   try {
     console.log(req.params.id)
-    // const result = await Gallery.deleteOne(
-    //   {},
-    //   { $pull: { image: { _id: ObjectId(req.params.id)  } } }
-    // );
+    await Gallery.deleteOne({_id:req.params.id})
     res.redirect("/admin/adminGallery");
   } catch (error) {
     console.log(error);
-    res.status(500).send("Internal Server Error");
+    res.status(500).send('Internal Server Error');
   }
 };
 
 exports.editGallary = async (req, res) => {
   try {
     console.log(req.params.id)
-    const datas = await Gallery.findByIdAndUpdate({_id:req.params.id})
-    console.log(datas)
-    res.render("admin/addGalleryImages", { admin: true });
+    const data = await Gallery.find({_id:req.params.id});
+    const result = data.map((item) => {
+      // Map through the 'image' array inside each object
+      const mappedImages = item.image.map((imageObj) => {
+        return {
+          imageUrl: imageObj.url,
+          alt: item.alt,
+          // Add more properties if needed
+        };
+      });
+
+      // Return the updated item with the mapped images array
+      return {
+        ...item,
+        image: mappedImages,
+      };
+    });
+
+    res.render("admin/addGalleryImages", { admin: true, data:result});
   } catch (error) {
     console.log(error);
     res.status(500).send("Internal Server Error");
@@ -254,6 +256,33 @@ exports.addTestimonialsPost = async (req, res) => {
     res.render("admin/successTest", { admin: true });
   } catch (error) {}
 };
+exports.viewTestimonials = async (req, res) => {
+  try {
+    const data = await Testimonials.find()
+    console.log(data,"data");
+    const result = data.map((item)=>{
+    const mappeddata = item.Testimonials.map((data)=>{
+
+      return{
+        ...item,
+        name:data.name,
+        text:data.text,
+        serviceAquired:data.serviceAquired
+      }
+
+    })
+      console.log(item.name,"ss")
+      return{
+        Testimonials:mappeddata,
+
+      }
+    })
+    console.log(data);
+
+    res.render("admin/view-Testimonials", { admin: true,mappeddata:result });
+  } catch (error) {}
+};
+
 
 
 exports.ViewAllUsers= async(req,res)=>{
