@@ -52,10 +52,8 @@ exports.superadminLoginPost = async (req, res) => {
         console.log("fail");
       }
   
-      // req.session.admin = result;
-      // req.session.loggedIn = true;
-      console.log( req.session.admin.access, " req.session.admin")
-      // res.render("admin/adminHome", { admin: true, message: "Logged", access: req.session.admin.access, name:req.session.admin.name });
+     
+   
     }
 
     // if (
