@@ -82,7 +82,7 @@ Handlebars.registerHelper( "when",function(operand_1, operator, operand_2, optio
 
 
 console.log('Trying to conenct to mongodb');
-mongoose.connect('mongodb://127.0.0.1:27017/GFI').then(() => {
+mongoose.connect(process.env.MONGO_DB).then(() => {
   console.log('Connected to mongodb');
 })
   .catch(console.log);
