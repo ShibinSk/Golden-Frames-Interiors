@@ -4,8 +4,11 @@ const Gallery = require("../model/adminIGalleryModel");
 const Testimonials = require("../model/testimonials");
 const HomePageBlog = require("../model/HomeBlogmodel");
 const storyBlog = require("../model/blogStoryModel");
+const UserController =require('../Controllers/UserController')
 
 /* GET home page. */
+router.get("/Testimonials", UserController.getTestimonials)
+
 router.get("/", function (req, res, next) {
   res.render("index", { admin: false });
 });
@@ -46,32 +49,7 @@ router.get("/gallery", async function (req, res, next) {
   }
 });
 
-router.get("/Testimonials", async function (req, res, next) {
-  try {
-    const testimonial = await Testimonials.find();
-    console.log(testimonial);
-    const testimonialData = testimonial.map((item) => {
-      const mappedTestimonial = item.Testimonials.map((DataObj) => {
-        return {
-          name: DataObj.name,
-          text: DataObj.text,
-          serviceAquired: DataObj.serviceAquired,
-        };
-      });
-
-      return {
-        ...item,
-        Testimonials: mappedTestimonial,
-      };
-    });
-
-    res.render("index/Testimonials", {
-      admin: false,
-      testimonial: testimonial,
-      mappedTestimonial: testimonialData,
-    });
-  } catch (error) {}
-});
+ 
 router.get("/Blog", async function (req, res, next) {
   try {
     const blogdata = await HomePageBlog.find().sort({ updatedAt: -1 }).limit(1) // Sort by updatedAt in descending order

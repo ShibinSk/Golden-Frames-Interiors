@@ -14,11 +14,17 @@ const app = express();
 const dotenv = require('dotenv')
 const bodyParser = require('body-parser');
 const session =require('express-session')
+const cors =require('cors')
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
+app.use(
+  cors({
+    credentials: true 
+  })
+);
 
 app.engine('hbs', hbs.engine({
   extname: 'hbs',
