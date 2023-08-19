@@ -5,8 +5,6 @@ const Testimonials = require("../model/testimonials");
 exports.getTestimonials= async (req,res)=>{
     try { 
         const testimonial = await Testimonials.find(); 
-        if(testimonial){
-            console.log(testimonial); 
             const testimonialData = testimonial.map((item) => { 
               const mappedTestimonial = item.Testimonials.map((DataObj) => { 
                 return { 
@@ -26,11 +24,6 @@ exports.getTestimonials= async (req,res)=>{
               testimonial: testimonial, 
               mappedTestimonial: testimonialData, 
             }); 
-
-        }else{
-            
-            res.send('note found')
-        }
      
       } catch (error) {
       res.send(error)
