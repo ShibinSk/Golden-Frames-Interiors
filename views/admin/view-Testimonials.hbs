@@ -31,12 +31,13 @@
  {{/each}}
     {{/each}} --}}
   <tbody>
-    {{#each mappeddata}}
-    {{#each Testimonials}}
+   
+    {{#each testimonials}}
+   
   
     <tr>
       <th scope="row">{{inc @index}}</th>
-      <td>{{this.name}}</td>
+      <td>{{name}}</td>
       <td>{{text}}</td> 
       <td>{{serviceAquired}}</td> 
       <td>{{header1}}</td>
@@ -54,9 +55,9 @@
         
         </td>
     </tr>
+    {{/each}}
+  
     {{!-- {{/each}} --}}
-    {{/each}}
-    {{/each}}
   </tbody>
 </table>
 

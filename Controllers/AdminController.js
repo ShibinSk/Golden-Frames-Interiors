@@ -263,11 +263,11 @@ exports.addTestimonialsPost = async (req, res) => {
     console.log(req.body);
     // await Testimonials.insertMany(req.body)
     const newtestimonials = new Testimonials({
-      Testimonials: {
+     
         name: req.body.name,
         text: req.body.text,
         serviceAquired: req.body.serviceAquired
-      },
+
     });
     await newtestimonials.save();
     res.render("admin/successTest", { admin: true });
@@ -275,29 +275,19 @@ exports.addTestimonialsPost = async (req, res) => {
 };
 exports.viewTestimonials = async (req, res) => {
   try {
-    const data = await Testimonials.find()
-    // console.log(data,"data");
-    const result = data.map((item)=>{
-    const mappeddata = item.Testimonials.map((data)=>{
+    const testimonials = await Testimonials.find(); // Retrieve the testimonials data
+    console.log(testimonials); // Check the data in the console
+  const data= testimonials.map((item)=>{
+    return{
+      name:item.name,
+      serviceAquired:item.serviceAquired,
+      text:item.text,
+      _id:item._id
+    }
+  })
 
-      return{
-        ...item,
-        name:data.name,
-        text:data.text,
-        serviceAquired:data.serviceAquired,
-        _id:item._id,
-      }
-
-    })
-      // console.log(item.name,"ss")
-      return{
-        Testimonials:mappeddata,
-
-      }
-    })
-    console.log(data);
-
-    res.render("admin/view-Testimonials", { admin: true,mappeddata:result });
+    // Pass the testimonials array to the template
+    res.render("admin/view-Testimonials", { admin: true, testimonials: data });
   } catch (error) {}
 };
 exports.deleteTestimonials = async (req, res) => {
