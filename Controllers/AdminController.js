@@ -384,7 +384,6 @@ const data=await Admin.deleteOne({_id:req.params.id})
 exports.editAdmin= async(req,res)=>{
   try {
 console.log(req.query.id)
-console.log(req.query.id);
 const data=await Admin.findOne({_id:req.query.id})
 console.log(data,"data")
 

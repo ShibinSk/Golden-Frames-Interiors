@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
+{{!-- <!DOCTYPE html>
+<html lang="en"> --}}
 <head>
   <!-- Design by foolishdeveloper.com -->
     <title>Waiting</title>
@@ -122,11 +122,10 @@ button{
         <div class="shape"></div>
         <div class="shape"></div>
     </div>
-    {{!-- {{data}} --}}
+   
     {{#each data}}
     <form action="/admin/edit-user?id={{_id}}" method="post">
         <h3>Edit Admin</h3>
-<p style="color: red;">{{message}}</p>
         <label for="name">Name</label>
         <input value="{{name}}" type="text" name='name' placeholder="Name"   id="username">
         
@@ -141,5 +140,5 @@ button{
         </div>
     </form>
     {{/each}}
-</body>
-</html>
+{{!-- </body>
+</html> --}}
