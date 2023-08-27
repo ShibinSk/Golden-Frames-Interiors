@@ -314,7 +314,36 @@ exports.deleteTestimonials = async (req, res) => {
 };
 exports.editTestimonials = async (req, res) => {
   try {
+    const id = req.query.id;
+    console.log(id, 'id');
+    const data= await Testimonials.findOne({_id :id})
+    console.log(data);
+    res.render('admin/editTestimonials',{admin:true,
+      name:data.name,
+      serviceAquired:data.serviceAquired,
+      text:data?.text,
+      _id:data?._id,
+    })
     
+
+  } catch (error) {
+    console.log(error);
+  }
+};
+exports.editTestimonialsPost = async (req, res) => {
+  try {
+
+    const id = req.query.id;
+    console.log(req.body, 'isd');
+      const newData = await Testimonials.updateOne({_id:id},{
+        $set:{
+          name:req.body.name,
+          serviceAquired:req.body.serviceAquired,
+          text:req.body.text,
+        }
+      })
+      res.redirect("/admin/view-Testimonials");
+      console.log(newData); 
 
    
   } catch (error) {

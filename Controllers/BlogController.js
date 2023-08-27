@@ -181,3 +181,88 @@ exports.blogStoryPost = async (req, res) => {
     res.status(500).send("Internal Server Error");
   }
 };
+
+exports.ViewblogStory= async(req,res)=>{
+  try {
+    const data = await BlogStoryData.find();
+    // console.log(data, "data");
+    const result = data.map((item) => {
+      // Map through the 'image' array inside each object
+      const mappedImages = item.image.map((imageObj) => {
+        return {
+          imageUrl: imageObj.url,
+          _id:item._id
+          // Add more properties if needed
+        };
+      });
+
+      // Return the updated item with the mapped images array
+      return {
+        ...item,
+       
+        header: item.header,
+        header1: item.header1,
+        header2: item.header2,
+        text: item.text,
+        text1: item.text1,
+        text2: item.text2,
+        image: mappedImages,
+      };
+    });
+    
+    res.render("admin/view-blogstory", {
+      data: data,
+      mappedData: result,
+      admin: true,
+      access: req.session.admin.access,
+      name: req.session.admin.name,
+    });
+  } catch (error) {}
+}
+
+exports.deleteBlogStory = async(req, res) => {
+  try {
+    console.log(req.params.id)
+    await BlogStoryData.deleteOne({_id :req.params.id})
+    res.redirect("/admin/view-blogstory");
+  } catch (error) {}
+};
+
+exports.editBlogStory = async(req, res) => {
+  try {
+    const id = req.query.id;
+    console.log(id)
+  const data=  await BlogStoryData.findOne({_id :id})
+  // console.log(data);
+    res.render("admin/editBlogStory",{admin: true,
+      header:data.header,
+      header1:data.header1,
+      header2:data.header2,
+      text:data.text,
+      text1:data.text1,
+      text2:data.text2,
+      image:data.image[0].url,
+      _id:data._id,
+    });
+  } catch (error) {}
+};
+
+exports.editBlogStoryPost = async(req, res) => {
+  try {
+    console.log(req.body, 'Ediredd');
+  console.log(req.query.id);
+    const newData = await BlogStoryData.updateOne({_id:req.query.id},{
+      $set:{
+        text:req.body.text,
+        text1:req.body.text1,
+        text2:req.body.text2,
+        header:req.body.header,
+        header1:req.body.header1,
+        header2:req.body.header2
+      }
+    })
+    res.redirect("/admin/view-blogstory");
+    console.log(newData); 
+    
+  } catch (error) {}
+};

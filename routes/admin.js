@@ -42,6 +42,7 @@ router.get('/view-Testimonials',AdminController.viewTestimonials)
 router.get('/delete-Testimonials',AdminController.deleteTestimonials)
 
 router.get('/edit-Testimonials',AdminController.editTestimonials)
+router.post('/edit-Testimonials',AdminController.editTestimonialsPost)
 
 
 
@@ -66,6 +67,11 @@ router.get('/add-blogStory',userMiddlewere.isLogout,BlogHomeController.blogStory
 
 router.post('/add-blogStory', upload.array('images', 4),BlogHomeController.blogStoryPost)
 // router.get('/about',AdminController.abott)
+router.get('/view-blogStory',userMiddlewere.isLogout,BlogHomeController.ViewblogStory)
+router.get('/delete-blogStory/:id',userMiddlewere.isLogout,BlogHomeController.deleteBlogStory)
+
+router.get('/edit-blogstory',userMiddlewere.isLogout,BlogHomeController.editBlogStory)
+router.post('/edit-blogstory',userMiddlewere.isLogout,BlogHomeController.editBlogStoryPost)
 
 
 

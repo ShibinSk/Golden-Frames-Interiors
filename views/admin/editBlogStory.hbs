@@ -1,0 +1,116 @@
+<div class="main">
+
+     
+  <div class="form-style-6">
+    <span>
+    </span>
+    <h1>Blog</h1>
+    <form action="/admin/edit-blogs?id={{_id}}" method="POST">
+      <input type="text" name="header" value="{{header}}" placeholder=" Name" />
+      <textarea name="text" placeholder="Type your Message">{{text}}</textarea>
+      <input type="text" value="{{header1}}" name="header1" placeholder=" Name" />
+      <textarea name="text1" placeholder="Type your Message">{{text1}}</textarea>
+      <input type="text" value="{{header2}}" name="header2" placeholder=" Name" />
+      <textarea name="text2" placeholder="Type your Message">{{text2}}</textarea>
+      <div class="col-12">
+        <div id="image-box1" style="width: 500px; height: 500px; display: none;"></div>
+        <button class="btn btn-primary  mt-3" type="button" style="display: none;" id="crop-btn1">Crop</button>
+      </div>
+      <div class="mt-5 col-md-6">
+        <label for="">IMAGE 1</label>
+        <img src="{{image}}" alt=""
+          style="width: 100px; height:auto" id="imgView1">
+        <input type="file" name="images" id="id_image1" class="form-control" onchange=" fileValidation1(event)"
+          accept="image/*">
+      </div>
+
+      <input type="submit" value="Add" />
+
+    </form>
+  </div>
+
+</div>
+
+<style>
+  .main {}
+
+  .form-style-6 {
+    font: 95% Arial, Helvetica, sans-serif;
+    max-width: 600px;
+    margin: 10px auto;
+    padding: 16px;
+    background: #F7F7F7;
+  }
+
+  .form-style-6 h1 {
+    background: #43D1AF;
+    padding: 20px 0;
+    font-size: 140%;
+    font-weight: 300;
+    text-align: center;
+    color: #fff;
+    margin: -16px -16px 16px -16px;
+  }
+
+  .form-style-6 input[type="text"],
+  .form-style-6 input[type="date"],
+  .form-style-6 input[type="datetime"],
+  .form-style-6 input[type="email"],
+  .form-style-6 input[type="number"],
+  .form-style-6 input[type="search"],
+  .form-style-6 input[type="time"],
+  .form-style-6 input[type="url"],
+  .form-style-6 textarea,
+  .form-style-6 select {
+    -webkit-transition: all 0.30s ease-in-out;
+    -moz-transition: all 0.30s ease-in-out;
+    -ms-transition: all 0.30s ease-in-out;
+    -o-transition: all 0.30s ease-in-out;
+    outline: none;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    width: 100%;
+    background: #fff;
+    margin-bottom: 4%;
+    border: 1px solid #ccc;
+    padding: 3%;
+    color: #555;
+    font: 95% Arial, Helvetica, sans-serif;
+  }
+
+  .form-style-6 input[type="text"]:focus,
+  .form-style-6 input[type="date"]:focus,
+  .form-style-6 input[type="datetime"]:focus,
+  .form-style-6 input[type="email"]:focus,
+  .form-style-6 input[type="number"]:focus,
+  .form-style-6 input[type="search"]:focus,
+  .form-style-6 input[type="time"]:focus,
+  .form-style-6 input[type="url"]:focus,
+  .form-style-6 textarea:focus,
+  .form-style-6 select:focus {
+    box-shadow: 0 0 5px #43D1AF;
+    padding: 3%;
+    border: 1px solid #43D1AF;
+  }
+
+  .form-style-6 input[type="submit"],
+  .form-style-6 input[type="button"] {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    width: 100%;
+    padding: 3%;
+    background: #43D1AF;
+    border-bottom: 2px solid #30C29E;
+    border-top-style: none;
+    border-right-style: none;
+    border-left-style: none;
+    color: #fff;
+  }
+
+  .form-style-6 input[type="submit"]:hover,
+  .form-style-6 input[type="button"]:hover {
+    background: #2EBC99;
+  }
+</style>

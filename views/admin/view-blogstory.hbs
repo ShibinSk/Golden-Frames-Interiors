@@ -8,14 +8,16 @@
   <thead class="thead-dark">
     <tr>
       <th scope="col">No</th>
-       <th scope="col">name</th>
-      <th scope="col">review</th>
-      <th scope="col">serviceAquired</th>
-      <th scope="col"></th>
-     
-    
-      
+       <th scope="col">Text1</th>
+      <th scope="col">Text1</th>
+      <th scope="col">Text3</th>
+      <th scope="col">heading1</th>
+      <th scope="col">heading2</th>
+      <th scope="col">heading3</th>
+      {{!-- <th scope="col">heading</th> --}}
+       <th >image</th>
        <th >Action</th>
+       
        
     </tr>
   </thead>
@@ -31,30 +33,30 @@
  {{/each}}
     {{/each}} --}}
   <tbody>
-    {{#each mappeddata}}
-    {{#each Testimonials}}
-  
+    {{#each mappedData}}
+    {{_id}}
     <tr>
       <th scope="row">{{inc @index}}</th>
-      <td>{{this.name}}</td>
-      <td>{{text}}</td> 
-      <td>{{serviceAquired}}</td> 
+      <td>{{text}}</td>
+      <td>{{text1}}</td> 
+      <td>{{text2}}</td>
+      <td>{{header}}</td> 
       <td>{{header1}}</td>
+      <td>{{header2}}</td>
       {{!-- <td></td> --}}
-    
-      {{!-- <td><img style="width: 50px; height: 50px;" src="{{imageUrl}}" alt=""></td> --}}
+    {{#each image}}
+      <td><img style="width: 50px; height: 50px;" src="{{imageUrl}}" alt=""></td>
       <td>
         <div class="DE">
-             <a href="/admin/edit-Testimonials?id={{_id}}" class="bn624">Edit</a>
+             <a href="/admin/edit-blogstory?id={{_id}}" class="bn624">Edit</a>
            <input type="hidden" name="id" id="id" value="{{this._id}}">
           {{!-- <a href="/admin/delete-products/{{this._id}}" class="bn623" onclick=" return confirm('Are You sure delete it {{this.name}}')">Delete</a> --}}
-          <a  class="bn623" href="/admin/delete-Testimonials?id={{_id}}">Delete</a>
+          <a  class="bn623" href="/admin/delete-blogstory/{{_id}}">Delete</a>
        
         </div>
         
         </td>
     </tr>
-    {{!-- {{/each}} --}}
     {{/each}}
     {{/each}}
   </tbody>
