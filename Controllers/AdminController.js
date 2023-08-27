@@ -381,14 +381,14 @@ const data=await Admin.deleteOne({_id:req.params.id})
     console.log(error)
   }
 }
-exports.editAdmin= async(req,res)=>{
+exports.editAdmin= async (req,res)=>{
   try {
 console.log(req.query.id)
 const data=await Admin.findOne({_id:req.query.id})
 console.log(data,"data")
 
   //  res.render("admin/view-allUsers");
-   res.render('admin/edit-users',{navside:true, data: data});
+   res.render('admin/edit-users',{admin:true, data: data});
     
   } catch (error) {
     console.log(error)
