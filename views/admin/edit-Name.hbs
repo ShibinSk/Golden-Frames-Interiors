@@ -123,8 +123,8 @@ button{
     </div>
    
     {{#each data}}
-    <form action="/admin/edit-user?id={{_id}}" method="post">
-        <h3>Edit Admin</h3>
+    <form action="/admin/editName" method="post">
+        <h3>Edit Name</h3>
         <label for="name">Name</label>
         <input style=" display: block;
     height: 50px;
@@ -137,7 +137,7 @@ button{
     font-weight: 300;"  value="{{name}}" type="text" name='name' placeholder="Name"   id="">
         
 
-        <label for="password">Email</label>
+        {{!-- <label for="password">Email</label>
         <input style=" display: block;
     height: 50px;
     width: 100%;
@@ -146,7 +146,7 @@ button{
     padding: 0 10px;
     margin-top: 8px;
     font-size: 14px;
-    font-weight: 300;" value="{{email}}" type="email" name='email' placeholder="Email" id="email">
+    font-weight: 300;" value="{{email}}" type="email" name='email' placeholder="Email" id="email"> --}}
 
         <button type="submit">Edit</button>
         <div class="social">

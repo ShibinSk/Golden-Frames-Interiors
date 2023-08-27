@@ -14,6 +14,10 @@ router.post('/add-admin',AdminController.adminLoginPost)
 
 router.get('/logout',AdminController.logoutget)
 
+router.get('/editName',AdminController.editName)
+
+router.post('/editName',AdminController.editNamePost)
+
 
 /**
  * ====================================================================================================

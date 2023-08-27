@@ -23,6 +23,32 @@ exports.superadminLoginGet = async (req, res) => {
     console.log(error);
   }
 };
+exports.editName = async (req, res) => {
+  try {
+    const id =req.session.admin._id;
+    console.log(req.session.admin._id);  
+    const userData= await Admin.findOne({_id:id})
+    console.log(userData);
+    res.render('admin/edit-Name', {navside:true , data:userData})
+  } catch (error) {
+    console.log(error);
+  }
+};
+exports.editNamePost = async (req, res) => {
+  try {
+    const id =req.session.admin?._id;
+    console.log(req.session.admin._id);  
+    const userData= await Admin.updateOne({_id:id},{
+      $set:{
+        name:req.body.name
+      }
+    })
+    console.log(userData.name);
+    res.render('admin/adminHome',{admin:true,name:userData.name })
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 exports.superadminLoginPost = async (req, res) => {
   try {

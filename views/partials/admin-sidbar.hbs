@@ -101,11 +101,11 @@
         <div class="btn-group dropup pl-1.5">
           <button type="button" style="color:rgb(255, 255, 255); border-radius: 5px; background-color: #5a73c500 " class=" dropdown-toggle" data-bs-toggle="dropdown"
             aria-expanded="false">
-         SuperAdmin
+        {{name}}
           </button>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" onclick="window.dialog.showModal();" href="#">Add Admin</a></li>
-            <li><a class="dropdown-item" href="#">Change Name</a></li>
+            <li><a class="dropdown-item" href="/admin/editName">Change Name</a></li>
             <li><a class="dropdown-item" href="#">Change Password</a></li>
             <li><a class="dropdown-item" href="/admin/view-allUsers/">User List</a></li>
             <!-- Dropdown menu links -->
