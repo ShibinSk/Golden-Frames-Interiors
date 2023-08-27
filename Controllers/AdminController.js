@@ -320,6 +320,10 @@ exports.editTestimonials = async (req, res) => {
     console.log(error);
   }
 };
+
+
+
+
 exports.editTestimonialsPost = async (req, res) => {
   try {
 
@@ -372,6 +376,40 @@ const data=await Admin.deleteOne({_id:req.params.id})
 
   //  res.render("admin/view-allUsers");
    res.redirect('/admin/view-allUsers');
+    
+  } catch (error) {
+    console.log(error)
+  }
+}
+exports.editAdmin= async(req,res)=>{
+  try {
+console.log(req.query.id)
+console.log(req.query.id);
+const data=await Admin.findOne({_id:req.query.id})
+console.log(data,"data")
+
+  //  res.render("admin/view-allUsers");
+   res.render('admin/edit-users',{navside:true, data: data});
+    
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+exports.editAdminPost= async(req,res)=>{
+  try {
+    console.log(req.query.id);
+    console.log(req.body);
+
+    const data = await Admin.updateOne({_id:req.query.id},
+      {
+        $set:{
+          name:req.body.name,
+          email:req.body.email
+        }
+      })
+      console.log(data);
+      res.redirect("/admin/view-allUsers");
     
   } catch (error) {
     console.log(error)

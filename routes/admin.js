@@ -79,5 +79,9 @@ router.get('/view-allUsers',AdminController.ViewAllUsers)
 
 router.get('/dltAdmin/:id',AdminController.dltAdmin)
 
+router.get('/edit-user',AdminController.editAdmin)
+
+router.post('/edit-user',AdminController.editAdminPost)
+
 module.exports = router;
 
