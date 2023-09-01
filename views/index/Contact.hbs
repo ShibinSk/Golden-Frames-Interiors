@@ -219,14 +219,4 @@
       }
     })
   })
-
-  function doGet() {
-    var output = ContentService.createTextOutput('Hello, World!');
-    output.setMimeType(ContentService.MimeType.TEXT);
-
-    // Allow requests from localhost:3002
-    output.setHeader("Access-Control-Allow-Origin", "http://localhost:3002");
-
-    return output;
-  }
 </script>

@@ -1,5 +1,6 @@
  <link rel="stylesheet" href="Home.css" media="screen" />
  <link rel="stylesheet" href="nicepage.css" media="screen" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
  <head>
   <meta
       name="keywords"
@@ -554,7 +555,8 @@ We are always here to fill your dream interior colourful. One of the best interi
                   <div class="u-align-left u-form u-form-1">
                       {{!-- action="./scripts/form-4e4c-carousel_c940.php" --}}
                     <form
-                    action="../scripts/form-4e4c-carousel_c940.php"
+                    id="submit-formHome"
+                    action=""
                       class="u-clearfix u-form-spacing-28 u-form-vertical u-inner-form"
                       style="padding: 0px"
                       source="customphp"
@@ -655,13 +657,13 @@ We are always here to fill your dream interior colourful. One of the best interi
                       >
                         Thank you! Your message has been sent.
                       </div>
-                      <div
+                      {{!-- <div
                         class="u-form-send-error u-form-send-message"
                         wfd-invisible="true"
                       >
                         Unable to send your message. Please fix errors then try
                         again.
-                      </div>
+                      </div> --}}
                       <input
                         type="hidden"
                         value=""
@@ -702,7 +704,9 @@ We are always here to fill your dream interior colourful. One of the best interi
           <div class="u-form u-form-1">
               {{!-- action="./scripts/form-6627.php" --}}
             <form
-              action="../scripts/form-6627.php"
+            id="submit-formHomeDilog"
+               method="post"
+              action=""
               class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form"
               style="padding: 0px"
               source="customphp"
@@ -762,9 +766,7 @@ We are always here to fill your dream interior colourful. One of the best interi
               <div class="u-form-send-message u-form-send-success">
                 Thank you! Your message has been sent.
               </div>
-              <div class="u-form-send-error u-form-send-message">
-                Unable to send your message. Please fix errors then try again.
-              </div>
+              
               <input type="hidden" value="" name="recaptchaResponse" />
             </form>
           </div>
@@ -931,6 +933,43 @@ We are always here to fill your dream interior colourful. One of the best interi
         </p>
       </div>
     </footer>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $("#submit-formHome").submit((e) => {
+    e.preventDefault()
+    $.ajax({
+      url: "https://script.google.com/macros/s/AKfycbweaUodnGADOmf8yOsXVXMI8PelkOrENNcGY83HlEvivt2zDUCl478SZfYvShcQEugX/exec",
+      data: $("#submit-formHome").serialize(),
+      method: "post",
+      success: function (response) {
+        alert("Form submitted successfully")
+        window.location.reload()
+        //window.location.href="https://google.com"
+      },
+      error: function (err) {
+        alert("Something Error")
+
+      }
+    })
+  })
+  $("#submit-formHomeDilog").submit((e) => {
+    e.preventDefault()
+    $.ajax({
+      url: "https://script.google.com/macros/s/AKfycbweaUodnGADOmf8yOsXVXMI8PelkOrENNcGY83HlEvivt2zDUCl478SZfYvShcQEugX/exec",
+      data: $("#submit-formHomeDilog").serialize(),
+      method: "post",
+      success: function (response) {
+        alert("Form submitted successfully")
+        window.location.reload()
+        //window.location.href="https://google.com"
+      },
+      error: function (err) {
+        alert("Something Error")
+
+      }
+    })
+  })
+</script>
     <style>
       .u-dialog-section-9 .u-dialog-1 {
         width: 800px;
@@ -1085,3 +1124,4 @@ We are always here to fill your dream interior colourful. One of the best interi
       }
       
     </style>
+    

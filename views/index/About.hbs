@@ -97,7 +97,8 @@
             <div
               class="u-container-layout u-valign-middle-lg u-valign-middle-md u-valign-middle-xl u-container-layout-6">
               <div class="u-align-left u-form u-form-1">
-                <form action="./scripts/form-82b7-cfa5.php"
+                <form action=""
+                id="submit-formAbout"
                   class="u-clearfix u-form-spacing-28 u-form-vertical u-inner-form" style="padding: 0px"
                   source="customphp" name="form">
                   <div class="u-form-group u-form-name u-form-partition-factor-2">
@@ -132,10 +133,10 @@
                   <div class="u-form-send-message u-form-send-success" wfd-invisible="true">
                     Thank you! Your message has been sent.
                   </div>
-                  <div class="u-form-send-error u-form-send-message" wfd-invisible="true">
+                  {{!-- <div class="u-form-send-error u-form-send-message" wfd-invisible="true">
                     Unable to send your message. Please fix errors then try
                     again.
-                  </div>
+                  </div> --}}
                   <input type="hidden" value="" name="recaptchaResponse" wfd-invisible="true" />
                 </form>
               </div>
@@ -160,7 +161,8 @@
         Please Fill the below details to get your free quote
       </p>
       <div class="u-form u-form-1">
-        <form action="./scripts/form-6627.php" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form"
+        
+        <form action="" method="post"  id="submit-96" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form"
           style="padding: 0px" source="customphp" name="form">
           <div class="u-form-group u-form-name">
             <label for="name-31f5" class="u-form-control-hidden u-label">Name</label>
@@ -186,9 +188,9 @@
           <div class="u-form-send-message u-form-send-success">
             Thank you! Your message has been sent.
           </div>
-          <div class="u-form-send-error u-form-send-message">
+          {{!-- <div class="u-form-send-error u-form-send-message">
             Unable to send your message. Please fix errors then try again.
-          </div>
+          </div> --}}
           <input type="hidden" value="" name="recaptchaResponse" />
         </form>
       </div>
@@ -290,6 +292,26 @@
     </p>
   </div>
 </footer>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $("#submit-formAbout").submit((e) => {
+    e.preventDefault()
+    $.ajax({
+      url: "https://script.google.com/macros/s/AKfycbweaUodnGADOmf8yOsXVXMI8PelkOrENNcGY83HlEvivt2zDUCl478SZfYvShcQEugX/exec",
+      data: $("#submit-formHome").serialize(),
+      method: "post",
+      success: function (response) {
+        alert("Form submitted successfully")
+        window.location.reload()
+        //window.location.href="https://google.com"
+      },
+      error: function (err) {
+        alert("Something Error")
+
+      }
+    })
+  })
+</script>
 <style>
   .u-dialog-section-5 .u-dialog-1 {
     width: 800px;
