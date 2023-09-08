@@ -31,15 +31,13 @@ app.use(
 //   changeOrigin: true, // Add this option for changing the origin
 // }));
 
-app.engine(
-  "hbs",
-  hbs.engine({
-    extname: "hbs",
-    defaultLayout: "layout",
-    layoutsDir: __dirname + "/views/layout/",
-    partialsDir: __dirname + "/views/partials",
-  })
-);
+// app.engine(
+//   "hbs",
+//   hbs.engine({
+//     extname: "hbs",
+//     partialsDir: __dirname + "/views/partials",
+//   })
+// );
 
 Handlebars.registerHelper("inc", (value) => {
   return parseInt(value) + 1;
