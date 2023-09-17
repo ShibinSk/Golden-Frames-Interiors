@@ -8,7 +8,7 @@ const UserController =require('../Controllers/UserController')
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
-  res.render("index");
+  res.render("index/underMaintantans");
 
 router.get("/Testimonials", UserController.getTestimonials)
 
