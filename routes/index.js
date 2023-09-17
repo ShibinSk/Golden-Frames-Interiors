@@ -10,7 +10,7 @@ const UserController =require('../Controllers/UserController')
 router.get("/Testimonials", UserController.getTestimonials)
 
 router.get("/", function (req, res, next) {
-  res.render("index", { admin: false });
+  res.render("index/underMaintantans", { admin: false });
 });
 router.get("/about", function (req, res, next) {
   res.render("index/About", { admin: false });
