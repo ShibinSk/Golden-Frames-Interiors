@@ -7,10 +7,11 @@ const storyBlog = require("../model/blogStoryModel");
 const UserController =require('../Controllers/UserController')
 
 /* GET home page. */
-router.get("/Testimonials", UserController.getTestimonials)
-
 router.get("/", function (req, res, next) {
   res.render("index/underMaintantans", { admin: false });
+  
+router.get("/Testimonials", UserController.getTestimonials)
+
 });
 router.get("/about", function (req, res, next) {
   res.render("index/About", { admin: false });
