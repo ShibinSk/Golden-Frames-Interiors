@@ -25,7 +25,18 @@ app.use(
     credentials: true,
   })
 );
+// app.use('/external', createProxyMiddleware({
+//   target: 'https://script.google.com/macros/library/d/1S8fMAIybFOXniwPcmRHsF7EM9a-gukpmpPOPlixBcRm84BITHUH2UYqy/2',
+//   changeOrigin: true, // Add this option for changing the origin
+// }));
 
+// app.engine(
+//   "hbs",
+//   hbs.engine({
+//     extname: "hbs",
+//     partialsDir: __dirname + "/views/partials",
+//   })
+// );
 Handlebars.registerHelper("inc", (value) => {
   return parseInt(value) + 1;
 });
