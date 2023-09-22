@@ -13,13 +13,14 @@ const session = require("express-session");
 
 exports.superadminLoginGet = async (req, res) => {
   try {
-    if(req.session.loggedIn){
-      res.render("admin/adminHome", { message: "Logged",data: req.session.admin});
-    }else{
+    res.render("index/not-found-page");
+    // if(req.session.loggedIn){
+    //   res.render("admin/adminHome", { message: "Logged",data: req.session.admin});
+    // }else{
 
-      res.render("admin/adminLogin", { navside: true });
-    }
-  } catch (error) {
+      //   res.render("admin/adminLogin", { navside: true });
+      // }
+    } catch (error) {
     console.log(error);
   }
 };
