@@ -14,7 +14,7 @@ const session = require("express-session");
 exports.superadminLoginGet = async (req, res) => {
   try {
     if(req.session.loggedIn){
-      res.render("admin/adminHome", { admin: true, message: "Logged",data: req.session.admin});
+      res.render("admin/adminHome", { message: "Logged",data: req.session.admin});
     }else{
 
       res.render("admin/adminLogin", { navside: true });
@@ -29,7 +29,7 @@ exports.editName = async (req, res) => {
     console.log(req.session.admin._id);  
     const userData= await Admin.findOne({_id:id})
     console.log(userData);
-    res.render('admin/edit-Name', {navside:true , data:userData})
+    res.render('admin/edit-Name', {data:userData})
   } catch (error) {
     console.log(error);
   }
@@ -162,7 +162,7 @@ exports.logoutget=(req,res)=>{
 
 exports.adminGetGallery = async (req, res) => {
   try {
-
+console.log('hey');
     const data = await Gallery.find();
     console.log(data, "data")
     const result = data.map((item) => {
@@ -185,7 +185,7 @@ exports.adminGetGallery = async (req, res) => {
       };
     });
 
-    console.log(result[0]);
+    console.log(result, 'result');
 
     // Pass both the original 'data' array and the mapped 'result' array to the view
     // res.render("index/Gallery", {
@@ -194,7 +194,7 @@ exports.adminGetGallery = async (req, res) => {
     //   mappedData: result,
     // });
 
-    res.render("admin/adminGallery", { admin: true,data: data, mappedData: result, access: req.session.admin.access, name:req.session.admin.name });
+    res.render("admin/adminGallery", {data: data, mappedData: result, name:req.session.admin.name });
   } catch (error) {}
 };
 

@@ -1,9 +1,35 @@
 
-   <link rel="stylesheet" href="style.css" media="screen" />
+  <link rel="stylesheet" href="style.css" media="screen" />
  {{!-- <link rel="stylesheet" href="nicepage.js" media="screen" /> --}}
  {{!-- <link rel="stylesheet" href="nicepage.css" media="screen" /> --}}
  {{!-- <link rel="stylesheet" href="jquery.js" media="screen" /> --}}
-   
+   <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <link
+      id="u-theme-google-font"
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i"
+    />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link
+      id="u-page-google-font"
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i"
+    />
+
+<script
+      class="u-script"
+      type="text/javascript"
+      src="/jquery.js"
+      defer=""
+    ></script>
+    <script
+      class="u-script"
+      type="text/javascript"
+      src="/nicepage.js"
+      defer=""
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
   <nav class="sidebar close">
   <header>
     <div class="image-text">
@@ -14002,64 +14028,6 @@ admin css side bar
   });
 
 </script>
- 
-<style>
-  *{
-  margin: 0px;
-  padding: 0px;
-}
-
-body{
-  font-family: Ariel, Helvetica, sans-serif;
-  background-color: rgb(255, 255, 255);
-  color: rgb(0, 0, 0);
-  line-height: 1.6;
-  text-align: center;
-}
-
-.container{
-  max-width: 960px;
-  margin: auto;
-  padding: 0 30px;
-}
-
-#showcase{
-  height: 300px;
-}
-
-#showcase h1{
-  font-size: 50px;
-  line-height: 1.3;
-  position: relative;
-  animation: heading;
-  animation-duration: 3s;
-  animation-fill-mode: forwards;
-}
-
-@keyframes heading{
-  0% {top: -50px;}
-  100% {top: 200px;}
-}
-
-#content {
-  position: relative;
-  animation-name: content;
-  animation-duration: 3s;
-  animation-fill-mode: forwards;
-}
-
-@keyframes content{
-  0% {left: -1000px;}
-  100% {left: 0px;}
-}
-
-
-
-@keyframes btn {
-  0%{opacity: 0}
-  100%{opacity: 1}
-}     
-</style>
    <link rel="stylesheet" href="style.css" media="screen" />
 <div class="addpro">
   
@@ -14095,7 +14063,7 @@ body{
   <tbody>
     {{#each mappedData}}
     {{#each image}}
-    <tr>
+    {{!-- <tr> --}}
       <th scope="row">{{inc @index}}</th>
       {{!-- <td></td>
       <td></td> --}}
