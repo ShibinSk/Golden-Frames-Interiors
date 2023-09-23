@@ -214,6 +214,9 @@
 }
 
 .u-section-3 .u-text-2 {
+  padding-bottom: 13px;
+  font-size: large;
+  font-weight: 700;
   margin: 20px 0 0;
   color: rgb(0, 0, 0);
 }

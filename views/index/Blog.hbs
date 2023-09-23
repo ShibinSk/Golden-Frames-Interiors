@@ -356,22 +356,29 @@
           {{#each storyDataMapped}}
   {{#each image}}
     <div class="u-align-left u-container-style u-image u-layout-cell u-shading u-size-20 u-image-1" data-image-width="1750" data-image-height="1250">
-      <div class="u-container-layout u-container-layout-1">
+      <div class="u-container-layout u-valign-bottom u-container-layout-1" src="">
         <a href="/Blog-Story-page1?id={{_id}}">
           <img style="width: 48vh; height: 80vh;" src="{{imageUrl}}" alt="">
         </a>
-        <div class="u-text u-text-2">{{../header}}</div>
-        <div class="u-text u-text-2">{{../text}}</div>
+        {{!-- <div class="u-text u-text-2">{{../header}}</div> --}}
+        <h3 class="u-text u-text-1">{{../header}}</h3>
+        <p class="u-text u-text-2">{{../text}}.</p>
+        {{!-- <div class="u-text u-text-1">{{../text}}</div> --}}
       </div>
     </div>
   {{/each}}
 {{/each}}
-
+ {{!-- <div class="u-align-left u-container-style u-image u-layout-cell u-shading u-size-20 u-image-1" data-image-width="1750" data-image-height="1250">
+                <div class="u-container-layout u-valign-bottom u-container-layout-1" src="">
+                  <h3 class="u-text u-text-1">Blog Story 2</h3>
+                  <p class="u-text u-text-2">Sample text. Click to select the text box. Click again or double click to start editing the text.</p>
+                </div>
+              </div>
 
         </div>
       </div>
     </div>
-  </div>
+  </div> --}}
 </section>
    
     <section class="u-clearfix u-color-scheme-u10 u-palette-1-base u-section-4" id="sec-5e6b">
