@@ -6,8 +6,8 @@ const userMiddlewere=require('../Midalware/adminMidleware')
 const upload =require('../utils/multer')
 /* GET users listing. */
 
-// router.get('/',userMiddlewere.isLogin, AdminController.superadminLoginGet)
-router.get('/',AdminController.superadminLoginGet)
+router.get('/',userMiddlewere.isLogin, AdminController.superadminLoginGet)
+// router.get('/',AdminController.superadminLoginGet)
 
 router.post('/adminLogin',userMiddlewere.isLogin, AdminController.superadminLoginPost)
 

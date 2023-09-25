@@ -10,22 +10,26 @@ const HomeBlogData = require("../model/HomeBlogmodel");
 const BlogStoryData = require("../model/blogStoryModel");
 const Blogs = require("../model/HomeBlogmodel");
 
-exports.addBlog = (req, res) => {
+exports.addBlog =async (req, res) => {
   try {
+    const userName= (await Admin.findOne({_id:req.session.admin._id }))
+  const name=userName.name
     res.render("admin/add-blog", {
       admin: true,
       access: req.session.admin.access,
-      name: req.session.admin.name,
+      name,
     });
   } catch (error) {}
 };
 
-exports.blogStory = (req, res) => {
+exports.blogStory = async (req, res) => {
   try {
+    const userName= async (await Admin.findOne({_id:req.session.admin._id }))
+  const name=userName.name
     res.render("admin/blogStory", {
       admin: true,
       access: req.session.admin.access,
-      name: req.session.admin.name,
+      name,
     });
   } catch (error) {}
 };
@@ -79,6 +83,8 @@ exports.editBlogPost = async(req, res) => {
 
 exports.viewBlog = async (req, res) => {
   try {
+    const userName= (await Admin.findOne({_id:req.session.admin._id }))
+  const name=userName.name
     const data = await Blogs.find();
     // console.log(data, "data");
     const result = data.map((item) => {
@@ -110,7 +116,7 @@ exports.viewBlog = async (req, res) => {
       mappedData: result,
       admin: true,
       access: req.session.admin.access,
-      name: req.session.admin.name,
+      name,
     });
   } catch (error) {}
 };
@@ -184,6 +190,8 @@ exports.blogStoryPost = async (req, res) => {
 
 exports.ViewblogStory= async(req,res)=>{
   try {
+    const userName= (await Admin.findOne({_id:req.session.admin._id }))
+  const name=userName.name
     const data = await BlogStoryData.find();
     // console.log(data, "data");
     const result = data.map((item) => {
@@ -215,7 +223,7 @@ exports.ViewblogStory= async(req,res)=>{
       mappedData: result,
       admin: true,
       access: req.session.admin.access,
-      name: req.session.admin.name,
+      name,
     });
   } catch (error) {}
 }

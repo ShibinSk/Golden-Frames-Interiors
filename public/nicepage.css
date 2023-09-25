@@ -594,7 +594,7 @@ ol {
 }
 .u-effect-fade:hover .u-over-slide,
 .u-effect-fade.u-effect-active .u-over-slide {
-  opacity: 1;
+  /* opacity: 1; */
 }
 /* Over effect */
 .u-effect-over-left .u-over-slide {
@@ -20964,13 +20964,13 @@ a.pswp__share--download:hover {
 }
 .u-gallery-item .u-back-slide {
   width: 100%;
-  height: 90%;
+  height: 50%;
   background-size: cover;
   background-position: 50% 50%;
-  background-repeat: no-repeat;
+  /* background-repeat: no-repeat; */
 }
 .u-back-image {
-  height: 100%;
+  height: 50%;
   width: 100%;
   object-fit: cover;
   object-position: center;

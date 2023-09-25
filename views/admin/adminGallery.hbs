@@ -1,36 +1,24 @@
+<link rel="stylesheet" href="style.css" media="screen" />
+{{!--
+<link rel="stylesheet" href="nicepage.js" media="screen" /> --}}
+{{!--
+<link rel="stylesheet" href="nicepage.css" media="screen" /> --}}
+{{!--
+<link rel="stylesheet" href="jquery.js" media="screen" /> --}}
+<link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+<link id="u-theme-google-font" rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+<link id="u-page-google-font" rel="stylesheet"
+  href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i" />
 
-  <link rel="stylesheet" href="style.css" media="screen" />
- {{!-- <link rel="stylesheet" href="nicepage.js" media="screen" /> --}}
- {{!-- <link rel="stylesheet" href="nicepage.css" media="screen" /> --}}
- {{!-- <link rel="stylesheet" href="jquery.js" media="screen" /> --}}
-   <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
-    <link
-      id="u-theme-google-font"
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i"
-    />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <link
-      id="u-page-google-font"
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i"
-    />
+<script class="u-script" type="text/javascript" src="/jquery.js" defer=""></script>
+<script class="u-script" type="text/javascript" src="/nicepage.js" defer=""></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 
-<script
-      class="u-script"
-      type="text/javascript"
-      src="/jquery.js"
-      defer=""
-    ></script>
-    <script
-      class="u-script"
-      type="text/javascript"
-      src="/nicepage.js"
-      defer=""
-    ></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-
-  <nav class="sidebar close">
+<nav class="sidebar close">
   <header>
     <div class="image-text">
       <span class="image">
@@ -44,9 +32,9 @@
     </div>
     <i class='bx bx-chevron-right toggle'></i>
   </header>
- 
-{{!-- {{name}}
-{{access}} --}}
+
+  {{!-- {{name}}
+  {{access}} --}}
   <div class="menu-bar">
     <div class="menu">
 
@@ -127,13 +115,13 @@
           <span class="text nav-text">Logout</span>
         </a>
 
-         
-         {{#if access }}
-        
+
+        {{#if access }}
+
         <div class="btn-group dropup pl-1.5">
-          <button type="button" style="color:rgb(255, 255, 255); border-radius: 5px; background-color: #5a73c500 " class=" dropdown-toggle" data-bs-toggle="dropdown"
-            aria-expanded="false">
-        {{name}}
+          <button type="button" style="color:rgb(255, 255, 255); border-radius: 5px; background-color: #5a73c500 "
+            class=" dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            {{name}}
           </button>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" onclick="window.dialog.showModal();" href="#">Add Admin</a></li>
@@ -148,11 +136,11 @@
           <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown"
             aria-expanded="false">
 
-          {{name}}
+            {{name}}
           </button>
           <ul class="dropdown-menu">
             {{!-- <li><a class="dropdown-item" onclick="window.dialog.showModal();" href="#">Add Admin</a></li> --}}
-            <li><a class="dropdown-item" href="#">Change Name</a></li>
+            <li><a class="dropdown-item" href="/admin/editName">Change Name</a></li>
             <li><a class="dropdown-item" href="#">Change Password</a></li>
             {{!-- <li><a class="dropdown-item" href="/admin/view-allUsers/">User List</a></li> --}}
             <!-- Dropdown menu links -->
@@ -161,7 +149,7 @@
       </li>
     </div>
   </div>
-{{/if}}
+  {{/if}}
 
   <!-- Default dropup button -->
 
@@ -172,12 +160,14 @@
   <form action="/admin/add-admin" method="POST">
     <div class="form-group">
       <label for="exampleInputEmail1">Email address</label>
-      <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+      <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+        placeholder="Enter email">
       <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
     </div>
     <div class="form-group">
       <label for="exampleInputText">Name</label>
-      <input name="name" type="text" class="form-control" id="exampleInputText" aria-describedby="textlHelp" placeholder="Enter name">
+      <input name="name" type="text" class="form-control" id="exampleInputText" aria-describedby="textlHelp"
+        placeholder="Enter name">
     </div>
     <div class="form-group">
       <label for="exampleInputPassword1">Password</label>
@@ -199,28 +189,28 @@
 
 
 <script>
- const generatePasswordButton = document.getElementById("generatePasswordButton");
-const passwordField = document.getElementById("exampleInputPassword1");
-const showPasswordCheckbox = document.getElementById("showPasswordCheckbox");
+  const generatePasswordButton = document.getElementById("generatePasswordButton");
+  const passwordField = document.getElementById("exampleInputPassword1");
+  const showPasswordCheckbox = document.getElementById("showPasswordCheckbox");
 
-generatePasswordButton.addEventListener("click", () => {
-  const generatedPassword = generateRandomPassword(12); // Change the length as needed
-  passwordField.value = generatedPassword;
-});
+  generatePasswordButton.addEventListener("click", () => {
+    const generatedPassword = generateRandomPassword(12); // Change the length as needed
+    passwordField.value = generatedPassword;
+  });
 
-showPasswordCheckbox.addEventListener("change", () => {
-  passwordField.type = showPasswordCheckbox.checked ? "text" : "password";
-});
+  showPasswordCheckbox.addEventListener("change", () => {
+    passwordField.type = showPasswordCheckbox.checked ? "text" : "password";
+  });
 
-function generateRandomPassword(length) {
-  const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-  let password = "";
-  for (let i = 0; i < length; i++) {
-    const randomIndex = Math.floor(Math.random() * charset.length);
-    password += charset[randomIndex];
+  function generateRandomPassword(length) {
+    const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    let password = "";
+    for (let i = 0; i < length; i++) {
+      const randomIndex = Math.floor(Math.random() * charset.length);
+      password += charset[randomIndex];
+    }
+    return password;
   }
-  return password;
-}
 
 </script>
 
@@ -240,91 +230,100 @@ function generateRandomPassword(length) {
  } */
 
 
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
-:root {
-	--vs-primary: 29 92 255;
-}
+  @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
 
-/*Dialog Styles*/
-dialog {
-      margin-left: 38%;
+  :root {
+    --vs-primary: 29 92 255;
+  }
 
-  align-items: center;
-	padding: 1rem 3rem;
-	background: white;
-	max-width: 400px;
-	padding-top: 2rem;
-	border-radius: 20px;
-	border: 0;
-	box-shadow: 0 5px 30px 0 rgb(0 0 0 / 10%);
-	animation: fadeIn 1s ease both;
-	&::backdrop {
-		animation: fadeIn 1s ease both;
-		background: rgb(255 255 255 / 40%);
-		z-index: 2;
-		backdrop-filter: blur(20px);
-	}
-	.x {
-		filter: grayscale(1);
-		border: none;
-		background: none;
-		position: absolute;
-		top: 15px;
-		right: 10px;
-		transition: ease filter, transform 0.3s;
-		cursor: pointer;
-		transform-origin: center;
-		&:hover {
-			filter: grayscale(0);
-			transform: scale(1.1);
-		}
-	}
-	h2 {
-		font-weight: 600;
-		font-size: 2rem;
-		padding-bottom: 1rem;
-	}
-	p {
-		font-size: 1rem;
-		line-height: 1.3rem;
-		padding: 0.5rem 0;
-		a {
-			&:visited {
-				color: rgb(var(--vs-primary));
-			}
-		}
-	}
-}
+  /*Dialog Styles*/
+  dialog {
+    margin-left: 38%;
 
-/*General Styles*/
+    align-items: center;
+    padding: 1rem 3rem;
+    background: white;
+    max-width: 400px;
+    padding-top: 2rem;
+    border-radius: 20px;
+    border: 0;
+    box-shadow: 0 5px 30px 0 rgb(0 0 0 / 10%);
+    animation: fadeIn 1s ease both;
 
-button.primary {
-	display: inline-block;
-	font-size: 0.8rem;
-	color: #fff !important;
-	background: rgb(var(--vs-primary) / 100%);
-	padding: 13px 25px;
-	border-radius: 17px;
-	transition: background-color 0.1s ease;
-	box-sizing: border-box;
-	transition: all 0.25s ease;
-	border: 0;
-	cursor: pointer;
-	box-shadow: 0 10px 20px -10px rgb(var(--vs-primary) / 50%);
-	&:hover {
-		box-shadow: 0 20px 20px -10px rgb(var(--vs-primary) / 50%);
-		transform: translateY(-5px);
-	}
-}
+    &::backdrop {
+      animation: fadeIn 1s ease both;
+      background: rgb(255 255 255 / 40%);
+      z-index: 2;
+      backdrop-filter: blur(20px);
+    }
 
-@keyframes fadeIn {
-	from {
-		opacity: 0;
-	}
-	to {
-		opacity: 1;
-	}
-}
+    .x {
+      filter: grayscale(1);
+      border: none;
+      background: none;
+      position: absolute;
+      top: 15px;
+      right: 10px;
+      transition: ease filter, transform 0.3s;
+      cursor: pointer;
+      transform-origin: center;
+
+      &:hover {
+        filter: grayscale(0);
+        transform: scale(1.1);
+      }
+    }
+
+    h2 {
+      font-weight: 600;
+      font-size: 2rem;
+      padding-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1rem;
+      line-height: 1.3rem;
+      padding: 0.5rem 0;
+
+      a {
+        &:visited {
+          color: rgb(var(--vs-primary));
+        }
+      }
+    }
+  }
+
+  /*General Styles*/
+
+  button.primary {
+    display: inline-block;
+    font-size: 0.8rem;
+    color: #fff !important;
+    background: rgb(var(--vs-primary) / 100%);
+    padding: 13px 25px;
+    border-radius: 17px;
+    transition: background-color 0.1s ease;
+    box-sizing: border-box;
+    transition: all 0.25s ease;
+    border: 0;
+    cursor: pointer;
+    box-shadow: 0 10px 20px -10px rgb(var(--vs-primary) / 50%);
+
+    &:hover {
+      box-shadow: 0 20px 20px -10px rgb(var(--vs-primary) / 50%);
+      transform: translateY(-5px);
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
 
 
 
@@ -14028,65 +14027,64 @@ admin css side bar
   });
 
 </script>
-   <link rel="stylesheet" href="style.css" media="screen" />
+<link rel="stylesheet" href="style.css" media="screen" />
 <div class="addpro">
-  
+
   <div class="container mt-5 pt-5 ">
     <div class="row">
-        <a href="/admin/addGalleryImages" class="bn62">Add Images</a>
+      <a href="/admin/addGalleryImages" class="bn62">Add Images</a>
     </div>
     <table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">No</th>
-       <th scope="col">Alt</th>
-      {{!-- <th scope="col">Category</th> --}}
-      {{!-- <th scope="col">Price</th> --}}
-      {{!-- <th scope="col">Quantitiy</th> --}}
-      {{!-- <th scope="col">Alt</th> --}}
-       <th >image</th>
-       <th >Action</th>
-       
-    </tr>
-  </thead>
-    {{!-- {{#each mappedData}}
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">No</th>
+          <th scope="col">Alt</th>
+          {{!-- <th scope="col">Category</th> --}}
+          {{!-- <th scope="col">Price</th> --}}
+          {{!-- <th scope="col">Quantitiy</th> --}}
+          {{!-- <th scope="col">Alt</th> --}}
+          <th>image</th>
+          <th>Action</th>
+
+        </tr>
+      </thead>
+      {{!-- {{#each mappedData}}
       <!-- Access the 'image' array inside each object -->
       {{#each image}}
-          <div class="u-effect-fade u-effect-hover-zoom u-gallery-item">
-            <div class="u-back-slide" data-image-width="889" data-image-height="500">
-              <img class="u-back-image u-expanded" src="{{imageUrl}}" alt="{{../alt}}">
-            </div>
-            <div class="u-over-slide u-shading u-over-slide-1"></div>
-          </div>
- {{/each}}
-    {{/each}} --}}
-  <tbody>
-    {{#each mappedData}}
-    {{#each image}}
-    {{!-- <tr> --}}
-      <th scope="row">{{inc @index}}</th>
-      {{!-- <td></td>
-      <td></td> --}}
-      {{!-- <td>₹</td>  --}}
-      {{!-- <td></td> --}}
-      <td>{{alt}}</td>
-      <td><img style="width: 50px; height: 50px;" src="{{imageUrl}}" alt="{{alt}}"></td>
-      <td>
-        <div class="DE">
-             {{!-- <a href="/admin/edit-gallary/{{_id}}" class="bn624">Edit</a> --}}
-           <input type="hidden" name="id" id="id" value="{{this._id}}">
-          {{!-- <a href="/admin/delete-products/{{this._id}}" class="bn623" onclick=" return confirm('Are You sure delete it {{this.name}}')">Delete</a> --}}
-          <a  class="bn623" href="/admin/galleryimagedelete/{{_id}}">Delete</a>
-       
+      <div class="u-effect-fade u-effect-hover-zoom u-gallery-item">
+        <div class="u-back-slide" data-image-width="889" data-image-height="500">
+          <img class="u-back-image u-expanded" src="{{imageUrl}}" alt="{{../alt}}">
         </div>
-        
-        </td>
-    </tr>
-    {{/each}}
-    {{/each}}
-  </tbody>
-</table>
+        <div class="u-over-slide u-shading u-over-slide-1"></div>
+      </div>
+      {{/each}}
+      {{/each}} --}}
+      <tbody>
 
-</div>
+        {{#each mappedData}}
+        {{#each image}}
+        {{!-- <tr> --}}
+          <th scope="row"></th>
+
+          <td>{{alt}}</td>
+          <td><img style="width: 50px; height: 50px;" src="{{imageUrl}}" alt="{{alt}}"></td>
+          <td>
+
+            <div class="DE">
+              {{!-- <a href="/admin/edit-gallary/{{_id}}" class="bn624">Edit</a> --}}
+              <input type="hidden" name="id" id="id" value="{{this._id}}">
+
+              <a class="bn623" href="/admin/galleryimagedelete/{{_id}}">Delete</a>
+
+            </div>
+
+          </td>
+        </tr>
+        {{/each}}
+        {{/each}}
+      </tbody>
+    </table>
+
+  </div>
 
 </div>
