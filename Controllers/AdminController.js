@@ -13,11 +13,11 @@ const session = require("express-session");
 
 exports.superadminLoginGet = async (req, res) => {
   try {
-    const userName= (await Admin.findOne({_id:req.session?.admin?._id }))
-  const name=userName.name
+    // const userName= (await Admin.findOne({_id:req.session?.admin?._id }))
+  // const name=userName.name
     // res.render("index/not-found-page");
     if(req.session.loggedIn){
-      res.render("admin/adminHome", { access: req.session.admin.access,name, message: "Logged",data: req.session.admin});
+      res.render("admin/adminHome", { access: req.session.admin.access, message: "Logged",data: req.session.admin});
     }else{
 
         res.render("admin/adminLogin");
