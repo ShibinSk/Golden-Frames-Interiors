@@ -12,6 +12,7 @@
     <title>Interior Designers Kochi, Kerala - Golden Frame Interiors</title>
    <link rel="stylesheet" href="nicepage.css" media="screen" />
     <link rel="stylesheet" href="About.css" media="screen" />
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script
       class="u-script"
       type="text/javascript"
@@ -434,11 +435,12 @@
                 >
                   <div class="u-align-left u-form u-form-1">
                     <form
-                      action="./scripts/form-82b7-cfa5.php"
+                      action=""
                       class="u-clearfix u-form-spacing-28 u-form-vertical u-inner-form"
                       style="padding: 0px"
                       source="customphp"
                       name="form"
+                      id="submit-form"
                     >
                       <div
                         class="u-form-group u-form-name u-form-partition-factor-2"
@@ -535,13 +537,13 @@
                       >
                         Thank you! Your message has been sent.
                       </div>
-                      <div
+                      {{!-- <div
                         class="u-form-send-error u-form-send-message"
                         wfd-invisible="true"
                       >
                         Unable to send your message. Please fix errors then try
                         again.
-                      </div>
+                      </div> --}}
                       <input
                         type="hidden"
                         value=""
@@ -709,11 +711,12 @@
           </p>
           <div class="u-form u-form-1">
             <form
-              action="./scripts/form-6627.php"
+              action=""
               class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form"
               style="padding: 0px"
               source="customphp"
               name="form"
+              id="submit-form1"
             >
               <div class="u-form-group u-form-name">
                 <label for="name-31f5" class="u-form-control-hidden u-label"
@@ -769,9 +772,9 @@
               <div class="u-form-send-message u-form-send-success">
                 Thank you! Your message has been sent.
               </div>
-              <div class="u-form-send-error u-form-send-message">
+              {{!-- <div class="u-form-send-error u-form-send-message">
                 Unable to send your message. Please fix errors then try again.
-              </div>
+              </div> --}}
               <input type="hidden" value="" name="recaptchaResponse" />
             </form>
           </div>
@@ -966,3 +969,41 @@
     </style>
   </body>
 </html>
+  <script>
+        $("#submit-form").submit((e)=>{
+            e.preventDefault()
+            $.ajax({
+                url:"https://script.google.com/macros/s/AKfycbzGJKVdGEwIU5M5Z0dPI9q2we73BJouX584X95wChq9vmPfqf3FbB9AjBkdSfUSATRc/exec",
+                data:$("#submit-form").serialize(),
+                method:"post",
+                success:function (response){
+                    alert("Form submitted successfully")
+                    window.location.reload()
+                    //window.location.href="https://google.com"
+                },
+                error:function (err){
+                    alert("Something Error")
+    
+                }
+            })
+        })
+    </script>
+  <script>
+        $("#submit-form1").submit((e)=>{
+            e.preventDefault()
+            $.ajax({
+                url:"https://script.google.com/macros/s/AKfycbzGJKVdGEwIU5M5Z0dPI9q2we73BJouX584X95wChq9vmPfqf3FbB9AjBkdSfUSATRc/exec",
+                data:$("#submit-form1").serialize(),
+                method:"post",
+                success:function (response){
+                    alert("Form submitted successfully")
+                    window.location.reload()
+                    //window.location.href="https://google.com"
+                },
+                error:function (err){
+                    alert("Something Error")
+    
+                }
+            })
+        })
+    </script>
